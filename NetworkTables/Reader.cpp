@@ -15,7 +15,10 @@
 #include <errnoLib.h> 
 #include <selectLib.h> 
 #include <sockLib.h> 
-#include <usrLib.h> 
+#include <usrLib.h>
+#include <stdio.h>
+//a bug in FD_ZERO: Calls bzero, which is not defined.  Include <string.h> as workaround
+#include <string.h>
 
 namespace NetworkTables
 {

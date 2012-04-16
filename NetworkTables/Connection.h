@@ -11,6 +11,7 @@
 #include "Task.h"
 #include <map>
 #include <deque>
+#include <memory>
 
 class NetworkTable;
 
@@ -26,7 +27,7 @@ class TransactionStart;
 class Connection : public ErrorBase
 {
 	friend class ConnectionManager;
-	friend class NetworkTable;
+	friend class ::NetworkTable;
 	friend class Reader;
 public:
 	static const UINT32 kWriteDelay = 250;

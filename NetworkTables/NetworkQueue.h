@@ -22,9 +22,9 @@ class Data;
 
 class NetworkQueue
 {
+public:
 	typedef std::deque<std::pair<Data *, bool> > DataQueue_t;
 	typedef std::map<UINT32, DataQueue_t::iterator> DataHash_t;
-public:
 	NetworkQueue();
 	~NetworkQueue();
 

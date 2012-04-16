@@ -17,6 +17,7 @@
 #include <sockLib.h>
 #include <taskLib.h>
 #include <usrLib.h>
+#include <string.h>
 
 #define kPort 1735
 
@@ -59,7 +60,7 @@ int ConnectionManager::ListenTaskRun()
 {
 	struct sockaddr_in serverAddr;
 	int sockAddrSize = sizeof(serverAddr);
-	bzero((char *)&serverAddr, sockAddrSize);
+	memset((char *)&serverAddr, 0, sockAddrSize);
 	serverAddr.sin_len = (u_char)sockAddrSize;
 	serverAddr.sin_family = AF_INET;
 	serverAddr.sin_port = htons(kPort);

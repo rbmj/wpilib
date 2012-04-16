@@ -12,6 +12,7 @@
 #include "WPIErrors.h"
 
 #include <stdio.h>
+#include <string.h>
 
 /** Private NI function needed to write to the VxWorks target */
 extern "C" int Priv_SetWriteFileAllowed(UINT32 enable); 

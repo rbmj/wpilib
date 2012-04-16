@@ -12,6 +12,7 @@
 
 #include <map>
 #include <string>
+#include <memory>
 
 class NetworkTable;
 
@@ -25,7 +26,7 @@ class Key : public Data
 	friend class Connection;
 	friend class Entry;
 	friend class KeyConnectionListener;
-	friend class NetworkTable;
+	friend class ::NetworkTable;
 public:
 	Key(NetworkTable *table, const char *keyName);
 	virtual ~Key();

@@ -8,6 +8,8 @@
 
 #include "NetworkTables/NetworkTable.h"
 
+#include <string.h>
+
 static const char *kP = "p";
 static const char *kI = "i";
 static const char *kD = "d";

@@ -19,6 +19,8 @@
 #include "Vision/AxisCamera.h"
 #include "WPIErrors.h"
 
+#include <string.h>
+
 /**
  * @brief Implements an object that automatically does a close on a
  * camera socket on destruction.
@@ -95,7 +97,7 @@ PCVideoServer::~PCVideoServer()
 		//  Create a connection to the localhost.
 		struct sockaddr_in selfAddr;
 		int sockAddrSize = sizeof(selfAddr);
-		bzero ((char *) &selfAddr, sockAddrSize);
+		memset((char *) &selfAddr, 0, sockAddrSize);
 		selfAddr.sin_family = AF_INET;
 		selfAddr.sin_len = (u_char) sockAddrSize;
 		selfAddr.sin_port = htons (VIDEO_TO_PC_PORT);
@@ -181,7 +183,7 @@ int PCVideoServer::ServerTask()
 	struct sockaddr_in serverAddr;
 	int sockAddrSize = sizeof(serverAddr);
 	int pcSock = ERROR;
-	bzero ((char *) &serverAddr, sockAddrSize);
+	memset ((char *) &serverAddr, 0, sockAddrSize);
 	serverAddr.sin_len = (u_char) sockAddrSize;
 	serverAddr.sin_family = AF_INET;
 	serverAddr.sin_port = htons (VIDEO_TO_PC_PORT);
