@@ -15,6 +15,7 @@
 #include <iostream>
 #include <set>
 #include <semLib.h>
+#include <stdio.h>
 
 Scheduler *Scheduler::_instance = NULL;
 

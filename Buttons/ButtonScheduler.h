@@ -7,6 +7,8 @@
 #ifndef __BUTTON_SCHEDULER_H__
 #define __BUTTON_SCHEDULER_H__
 
+#include <memory>
+
 class Button;
 class Command;
 

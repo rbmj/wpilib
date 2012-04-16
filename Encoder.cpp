@@ -26,11 +26,12 @@ void Encoder::InitEncoder(bool reverseDirection, EncodingType encodingType)
 {
 	m_encodingType = encodingType;
 	tRioStatusCode localStatus = NiFpga_Status_Success;
+	UINT32 index;
 	switch (encodingType)
 	{
 	case k4X:
 		Resource::CreateResourceObject(&quadEncoders, tEncoder::kNumSystems);
-		UINT32 index = quadEncoders->Allocate("4X Encoder");
+		index = quadEncoders->Allocate("4X Encoder");
 		if (index == ~0ul)
 		{
 			CloneError(quadEncoders);
