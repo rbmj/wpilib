@@ -7,7 +7,7 @@
 #ifndef C_PWM_H
 #define C_PWM_H
 
-#include <VxWorks.h>
+#include <vxWorks.h>
 #include "CWrappers.h"
 #include "PWM.h"
 

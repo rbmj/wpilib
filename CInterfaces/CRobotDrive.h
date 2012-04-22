@@ -7,7 +7,7 @@
 #ifndef C_ROBOT_DRIVE_H
 #define C_ROBOT_DRIVE_H
 
-#include <VxWorks.h>
+#include <vxWorks.h>
 
 void CreateRobotDrive(UINT32 leftMotor, UINT32 rightMotor);
 void CreateRobotDrive(UINT32 frontLeftMotor, UINT32 rearLeftMotor,

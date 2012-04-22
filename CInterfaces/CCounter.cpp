@@ -1,4 +1,4 @@
-#include "VxWorks.h"
+#include "vxWorks.h"
 #include "CInterfaces/CCounter.h"
 #include "Counter.h"
 #include "DigitalModule.h"

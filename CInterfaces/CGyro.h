@@ -7,7 +7,7 @@
 #ifndef C_GYRO_H
 #define C_GYRO_H
 
-#include <VxWorks.h>
+#include <vxWorks.h>
 
 typedef void *GyroObject;
 

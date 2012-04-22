@@ -7,7 +7,7 @@
 #ifndef C_VICTOR_H
 #define C_VICTOR_H
 
-#include <VxWorks.h>
+#include <vxWorks.h>
 
 void SetVictorSpeed(UINT32 module, UINT32 channel, float speed);
 void SetVictorSpeed(UINT32 channel, float speed);

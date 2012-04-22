@@ -8,7 +8,7 @@
 #define C_ERROR_H
 
 #include "ErrorBase.h"
-#include <VxWorks.h>
+#include <vxWorks.h>
 
 class CError : public ErrorBase
 {
