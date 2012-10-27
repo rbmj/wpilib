@@ -20,6 +20,9 @@ add_library(wpilib ${WPI_SOURCES})
 include_directories(${WPI_INCLUDES})
 target_link_libraries(wpilib ${WPI_LIBS})
 install(TARGETS wpilib LIBRARY DESTINATION lib ARCHIVE DESTINATION lib RUNTIME DESTINATION bin)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/ DESTINATION include/wpilib FILES_MATCHING PATTERN *.h)
-
-
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/ DESTINATION include/wpilib
+	FILES_MATCHING
+		PATTERN *.h
+		PATTERN ".git" EXCLUDE
+		PATTERN ".settings" EXCLUDE
+)
