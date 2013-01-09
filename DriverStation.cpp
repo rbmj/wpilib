@@ -38,7 +38,7 @@ DriverStation::DriverStation()
 	, m_dashboardLow(m_statusDataSemaphore)
 	, m_dashboardInUseHigh(&m_dashboardHigh)
 	, m_dashboardInUseLow(&m_dashboardLow)
-	, m_newControlData (false)
+	, m_newControlData(0)
 	, m_packetDataAvailableSem (0)
 	, m_enhancedIO()
 	, m_waitForDataSem(0)
@@ -46,9 +46,11 @@ DriverStation::DriverStation()
 	, m_userInDisabled(false)
 	, m_userInAutonomous(false)
 	, m_userInTeleop(false)
+	, m_userInTest(false)
 {
 	// Create a new semaphore
 	m_packetDataAvailableSem = semBCreate (SEM_Q_PRIORITY, SEM_EMPTY);
+	m_newControlData = semBCreate (SEM_Q_FIFO, SEM_EMPTY);
 
 	// Register that semaphore with the network communications task.
 	// It will signal when new packet data is available. 
@@ -130,8 +132,10 @@ void DriverStation::Run()
 			FRC_NetworkCommunication_observeUserProgramDisabled();
 		if (m_userInAutonomous)
 			FRC_NetworkCommunication_observeUserProgramAutonomous();
-		if (m_userInTeleop)
-			FRC_NetworkCommunication_observeUserProgramTeleop();
+        if (m_userInTeleop)
+            FRC_NetworkCommunication_observeUserProgramTeleop();
+        if (m_userInTest)
+            FRC_NetworkCommunication_observeUserProgramTest();
 	}
 }
 
@@ -169,7 +173,7 @@ void DriverStation::GetData()
 		m_approxMatchTimeOffset = -1.0;
 	}
 	lastEnabled = IsEnabled();
-	m_newControlData = true;
+	semGive(m_newControlData);
 }
 
 /**
@@ -401,7 +405,12 @@ bool DriverStation::IsAutonomous()
 
 bool DriverStation::IsOperatorControl()
 {
-	return !m_controlData->autonomous;
+	return !(m_controlData->autonomous || m_controlData->test);
+}
+
+bool DriverStation::IsTest()
+{
+	return m_controlData->test;
 }
 
 /**
@@ -412,9 +421,7 @@ bool DriverStation::IsOperatorControl()
  */
 bool DriverStation::IsNewControlData()
 {
-	bool newData = m_newControlData;
-	m_newControlData = false;
-	return newData;
+	return semTake(m_newControlData, NO_WAIT) == 0;
 }
 
 /**

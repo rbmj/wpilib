@@ -20,10 +20,14 @@ Synchronized::Synchronized(SEM_ID semaphore)
 	semTake(m_semaphore, WAIT_FOREVER);
 }
 
+Synchronized::Synchronized(ReentrantSemaphore& semaphore)
+{
+	m_semaphore = semaphore.m_semaphore;
+	semTake(m_semaphore, WAIT_FOREVER);
+}
+
 /**
- * Syncronized destructor.
- * This destructor frees the semaphore ensuring that the resource is freed for the block
- * containing the Synchronized object.
+ * This destructor unlocks the semaphore.
  */
 Synchronized::~Synchronized()
 {

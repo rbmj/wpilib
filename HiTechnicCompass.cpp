@@ -7,6 +7,7 @@
 #include "HiTechnicCompass.h"
 #include "DigitalModule.h"
 #include "I2C.h"
+#include "NetworkCommunication/UsageReporting.h"
 #include "WPIErrors.h"
 
 const UINT8 HiTechnicCompass::kAddress;
@@ -41,6 +42,8 @@ HiTechnicCompass::HiTechnicCompass(UINT8 moduleNumber)
 		{
 			wpi_setWPIError(CompassTypeError);
 		}
+
+		nUsageReporting::report(nUsageReporting::kResourceType_HiTechnicCompass, moduleNumber - 1);
 	}
 }
 
@@ -71,5 +74,32 @@ float HiTechnicCompass::GetAngle()
 		heading = (heading >> 8) | (heading << 8);
 	}
 	return (float)heading;
+}
+
+void HiTechnicCompass::UpdateTable() {
+	if (m_table != NULL) {
+		m_table->PutNumber("Value", GetAngle());
+	}
+}
+
+void HiTechnicCompass::StartLiveWindowMode() {
+	
+}
+
+void HiTechnicCompass::StopLiveWindowMode() {
+	
+}
+
+std::string HiTechnicCompass::GetSmartDashboardType() {
+	return "HiTechnicCompass";
+}
+
+void HiTechnicCompass::InitTable(ITable *subTable) {
+	m_table = subTable;
+	UpdateTable();
+}
+
+ITable * HiTechnicCompass::GetTable() {
+	return m_table;
 }
 

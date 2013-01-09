@@ -13,8 +13,6 @@
 #include "Synchronized.h"
 #include "WPIErrors.h"
 
-#include <string.h>
-
 #define kHeaderBundleID kFRC_NetworkCommunication_DynamicType_Kinect_Header
 #define kSkeletonExtraBundleID kFRC_NetworkCommunication_DynamicType_Kinect_Extra1
 #define kSkeletonBundleID kFRC_NetworkCommunication_DynamicType_Kinect_Vertices1

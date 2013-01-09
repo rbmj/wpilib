@@ -1,28 +1,31 @@
 cmake_minimum_required(VERSION 2.8)
-# Toolchain File for VxWorks
 
 project(WPILib)
 
-set(CPACK_GENERATOR DEB;RPM)
-set(CPACK_PACKAGE_NAME wpilib)
-set(CPACK_PACKAGE_VERSION 0.1)
-set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE all)
-set(CPACK_RPM_PACKAGE_ARCHITECTURE noarch)
-set(CPACK_PACKAGE_CONTACT rbmj@verizon.net)
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "C++ Libraries for FRC")
+set(HEADER_DIR include/WPILib)
+set(LIB_NAME wpilib)
+set(LIB_DIR lib)
+set(VERSION "2013.1")
 
-include(CPack)
+configure_file(WPILibConfig.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfig.cmake @ONLY)
+configure_file(WPILibConfigVersion.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake.in @ONLY)
 
 file(GLOB_RECURSE WPI_SOURCES *.cpp)
 set(WPI_INCLUDES ${CMAKE_SOURCE_DIR})
 set(WPI_LIBS "")
-add_library(wpilib ${WPI_SOURCES})
+add_library(${LIB_NAME} ${WPI_SOURCES})
 include_directories(${WPI_INCLUDES})
 target_link_libraries(wpilib ${WPI_LIBS})
-install(TARGETS wpilib LIBRARY DESTINATION lib ARCHIVE DESTINATION lib RUNTIME DESTINATION bin)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/ DESTINATION include/wpilib
+install(TARGETS ${LIB_NAME} LIBRARY DESTINATION ${LIB_DIR} ARCHIVE DESTINATION ${LIB_DIR} RUNTIME DESTINATION bin)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/ DESTINATION ${HEADER_DIR}
 	FILES_MATCHING
 		PATTERN *.h
 		PATTERN ".git" EXCLUDE
 		PATTERN ".settings" EXCLUDE
 )
+install(FILES
+   "${PROJECT_BINARY_DIR}/WPILibConfig.cmake"
+   "${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake"
+   DESTINATION "share/WPILib/cmake"
+)
+

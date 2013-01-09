@@ -41,8 +41,9 @@ public:
 
 	bool IsEnabled();
 	bool IsDisabled();
-	bool IsAutonomous();
+    bool IsAutonomous();
 	bool IsOperatorControl();
+    bool IsTest();
 	bool IsNewControlData();
 	bool IsFMSAttached();
 
@@ -84,10 +85,14 @@ public:
 	 *   for diagnostic purposes only
 	 * @param entering If true, starting autonomous code; if false, leaving autonomous code */
 	void InAutonomous(bool entering) {m_userInAutonomous=entering;}
-	/** Only to be used to tell the Driver Station what code you claim to be executing
-	 *   for diagnostic purposes only
-	 * @param entering If true, starting teleop code; if false, leaving teleop code */
-	void InOperatorControl(bool entering) {m_userInTeleop=entering;}
+    /** Only to be used to tell the Driver Station what code you claim to be executing
+     *   for diagnostic purposes only
+     * @param entering If true, starting teleop code; if false, leaving teleop code */
+    void InOperatorControl(bool entering) {m_userInTeleop=entering;}
+    /** Only to be used to tell the Driver Station what code you claim to be executing
+     *   for diagnostic purposes only
+     * @param entering If true, starting test code; if false, leaving test code */
+    void InTest(bool entering) {m_userInTest=entering;}
 
 protected:
 	DriverStation();
@@ -113,14 +118,15 @@ private:
 	Dashboard m_dashboardLow;
 	DashboardBase* m_dashboardInUseHigh;  // the current dashboard packers in use
 	DashboardBase* m_dashboardInUseLow;
-	bool m_newControlData;
+	SEM_ID m_newControlData;
 	SEM_ID m_packetDataAvailableSem;
 	DriverStationEnhancedIO m_enhancedIO;
 	SEM_ID m_waitForDataSem;
 	double m_approxMatchTimeOffset;
 	bool m_userInDisabled;
 	bool m_userInAutonomous;
-	bool m_userInTeleop;
+    bool m_userInTeleop;
+    bool m_userInTest;
 };
 
 #endif

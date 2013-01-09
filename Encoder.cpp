@@ -26,12 +26,11 @@ void Encoder::InitEncoder(bool reverseDirection, EncodingType encodingType)
 {
 	m_encodingType = encodingType;
 	tRioStatusCode localStatus = NiFpga_Status_Success;
-	UINT32 index;
 	switch (encodingType)
 	{
 	case k4X:
 		Resource::CreateResourceObject(&quadEncoders, tEncoder::kNumSystems);
-		index = quadEncoders->Allocate("4X Encoder");
+		UINT32 index = quadEncoders->Allocate("4X Encoder");
 		if (index == ~0ul)
 		{
 			CloneError(quadEncoders);
@@ -512,3 +511,36 @@ double Encoder::PIDGet()
 		return 0.0;
 	}
 }
+
+void Encoder::UpdateTable() {
+	if (m_table != NULL) {
+        m_table->PutNumber("Speed", GetRate());
+        m_table->PutNumber("Distance", GetDistance());
+        m_table->PutNumber("Distance per Tick", m_distancePerPulse);
+	}
+}
+
+void Encoder::StartLiveWindowMode() {
+	
+}
+
+void Encoder::StopLiveWindowMode() {
+	
+}
+
+std::string Encoder::GetSmartDashboardType() {
+	if (m_encodingType == k4X)
+		return "Quadrature Encoder";
+	else
+		return "Encoder";
+}
+
+void Encoder::InitTable(ITable *subTable) {
+	m_table = subTable;
+	UpdateTable();
+}
+
+ITable * Encoder::GetTable() {
+	return m_table;
+}
+

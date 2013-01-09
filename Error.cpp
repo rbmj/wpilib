@@ -7,8 +7,6 @@
 #include "Error.h"
 
 #include <taskLib.h>
-#include <stdio.h>
-#include <string.h>
 
 #include "NetworkCommunication/FRCComm.h"
 #include "Timer.h"

@@ -35,9 +35,6 @@
 #include "Timer.h"
 #include "VisionAPI.h"
 
-#include <stdio.h>
-#include <string.h>
-
 /** packet size */
 #define DEFAULT_PACKET_SIZE 512
 
@@ -49,7 +46,7 @@ int AxisCamera_debugFlag = 0;
 #define DPRINTF if(AxisCamera_debugFlag)dprintf
 
 /** @brief Camera data to be accessed globally */
-struct globalCamera_t {
+struct {
 	int readerPID; // Set to taskID for signaling
 	int index; /* -1,0,1 */
 	int	acquire; /* 0:STOP CAMERA; 1:START CAMERA */
@@ -432,7 +429,7 @@ static int CameraOpenSocketAndIssueAuthorizedRequest(const char* serverName, con
         }
 
         sockAddrSize = sizeof (struct sockaddr_in);
-        memset ((char *) &cameraAddr, 0, sockAddrSize);
+        bzero ((char *) &cameraAddr, sockAddrSize);
         cameraAddr.sin_family = AF_INET;
         cameraAddr.sin_len = (u_char) sockAddrSize;
         cameraAddr.sin_port = htons (CAMERA_PORT);
@@ -679,7 +676,7 @@ Authorization: Basic %s;\n\n";
 	  }
 
 	  sockAddrSize = sizeof (struct sockaddr_in);
-	  memset ((char *) &cameraAddr, 0, sockAddrSize);
+	  bzero ((char *) &cameraAddr, sockAddrSize);
 	  cameraAddr.sin_family = AF_INET;
 	  cameraAddr.sin_len = (u_char) sockAddrSize;
 	  cameraAddr.sin_port = htons (CAMERA_PORT);
@@ -928,7 +925,7 @@ static int initCamera(int frames, int compression, ImageResolution resolution, I
 	/* Initialize globalCamera area 
 	 * Set decode to 1 - always want to decode images for processing 
 	 * If ONLY sending images to the dashboard, you could set it to 0 */
-	memset ((char *)&globalCamera, 0, sizeof(globalCamera));
+	bzero ((char *)&globalCamera, sizeof(globalCamera));
 	globalCamera.index = -1;
 	globalCamera.decode = 1;
 	
