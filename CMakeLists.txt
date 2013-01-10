@@ -8,7 +8,7 @@ set(LIB_DIR lib)
 set(VERSION "2013.1")
 
 configure_file(WPILibConfig.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfig.cmake @ONLY)
-configure_file(WPILibConfigVersion.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake.in @ONLY)
+configure_file(WPILibConfigVersion.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake @ONLY)
 
 file(GLOB_RECURSE WPI_SOURCES *.cpp)
 set(WPI_INCLUDES ${CMAKE_SOURCE_DIR})
