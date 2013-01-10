@@ -306,9 +306,9 @@ HiTechnicColorSensor::RGB HiTechnicColorSensor::GetRawRGB()
 		m_i2c->Read(kRedRegister, sizeof(colors), (UINT8*)&colors);
 	}
 	
-	result.red = colors[0]<<8 + colors[1];
-	result.green = colors[2]<<8 + colors[3];
-	result.blue = colors[4]<<8 + colors[5];
+	result.red = (colors[0]<<8) + colors[1];
+	result.green = (colors[2]<<8) + colors[3];
+	result.blue = (colors[4]<<8) + colors[5];
 	
 	return result;
 }
