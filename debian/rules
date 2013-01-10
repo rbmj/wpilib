@@ -11,3 +11,8 @@
 
 %:
 	dh $@ 
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_TOOLCHAIN_FILE=/usr/powerpc-wrs-vxworks/share/cmake/toolchain.cmake
+
+
