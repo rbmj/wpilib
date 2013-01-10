@@ -22,6 +22,7 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/ DESTINATION ${HEADER_DIR}
 		PATTERN *.h
 		PATTERN ".git" EXCLUDE
 		PATTERN ".settings" EXCLUDE
+		PATTERN "${HEADER_DIR}" EXCLUDE #prevent infinite recurse case
 )
 install(FILES
    "${PROJECT_BINARY_DIR}/WPILibConfig.cmake"
