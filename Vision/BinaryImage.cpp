@@ -7,6 +7,8 @@
 #include "BinaryImage.h"
 #include "WPIErrors.h"
 
+#include <string.h> //memset
+
 /** Private NI function needed to write to the VxWorks target */
 IMAQ_FUNC int Priv_SetWriteFileAllowed(UINT32 enable); 
 

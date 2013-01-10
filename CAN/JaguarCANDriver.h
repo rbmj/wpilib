@@ -14,7 +14,7 @@
 #ifndef __JaguarCANDriver_h__
 #define __JaguarCANDriver_h__
 
-#include <VxWorks.h>
+#include <vxWorks.h>
 
 #ifdef __cplusplus
 extern "C"

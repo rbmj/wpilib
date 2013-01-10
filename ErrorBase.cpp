@@ -13,6 +13,7 @@
 #include <errnoLib.h>
 #include <symLib.h>
 #include <sysSymTbl.h>
+#include <stdio.h>
 
 SEM_ID ErrorBase::_globalErrorMutex = semMCreate(SEM_Q_PRIORITY | SEM_DELETE_SAFE | SEM_INVERSION_SAFE);
 Error ErrorBase::_globalError;

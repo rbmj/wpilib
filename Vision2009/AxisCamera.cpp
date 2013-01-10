@@ -35,6 +35,9 @@
 #include "Timer.h"
 #include "VisionAPI.h"
 
+#include <string.h> //for bzero, strstr, etc.
+#include <stdio.h> //fprintf
+
 /** packet size */
 #define DEFAULT_PACKET_SIZE 512
 
