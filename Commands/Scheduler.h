@@ -10,6 +10,10 @@
 #include "Commands/Command.h"
 #include "ErrorBase.h"
 #include "SmartDashboard/NamedSendable.h"
+#include "networktables/NetworkTable.h"
+#include "networktables2/type/NumberArray.h"
+#include "networktables2/type/StringArray.h"
+#include "SmartDashboard/SmartDashboard.h"
 #include <list>
 #include <map>
 #include <set>
@@ -18,7 +22,7 @@
 class ButtonScheduler;
 class Subsystem;
 
-class Scheduler : public ErrorBase
+class Scheduler : public ErrorBase, public NamedSendable
 {
 public:
 	static Scheduler *GetInstance();
@@ -30,6 +34,13 @@ public:
 	void Remove(Command *command);
 	void RemoveAll();
 	void SetEnabled(bool enabled);
+	
+	void UpdateTable();
+	std::string GetSmartDashboardType();
+	void InitTable(ITable *subTable);
+	ITable * GetTable();
+	std::string GetName();
+	std::string GetType();
 
 private:
 	Scheduler();
@@ -49,6 +60,11 @@ private:
 	CommandSet m_commands;
 	bool m_adding;
 	bool m_enabled;
+	StringArray *commands;
+	NumberArray *ids;
+	NumberArray *toCancel;
+	ITable *m_table;
+	bool m_runningCommandsChanged;
 };
 #endif
 

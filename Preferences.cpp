@@ -11,6 +11,7 @@
 #include "WPIErrors.h"
 
 #include <stdio.h>
+#include <algorithm>
 
 /** Private NI function needed to write to the VxWorks target */
 extern "C" int Priv_SetWriteFileAllowed(UINT32 enable); 
@@ -592,16 +593,18 @@ void Preferences::ValueChanged(ITable* table, const std::string& key, EntryValue
 
 		if (!isKeyAcceptable(key) || table->GetString(key, "").find('"')!=std::string::npos)
 		{
-			table->PutString(key, "\"");
-			m_values.erase(key);
-			std::vector<std::string>::iterator it = m_keys.begin();
-			for (; it != m_keys.end(); it++)
-			{
-				if (key==*it)
+			if(m_values.find(key) != m_values.end()){
+				m_values.erase(key);
+				std::vector<std::string>::iterator it = m_keys.begin();
+				for (; it != m_keys.end(); it++)
 				{
-					m_keys.erase(it);
-					break;
+					if (key==*it)
+					{
+						m_keys.erase(it);
+						break;
+					}
 				}
+				table->PutString(key, "\"");
 			}
 		}
 		else

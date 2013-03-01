@@ -11,10 +11,7 @@
 #include "networktables2/type/ArrayData.h"
 #include "networktables2/type/ArrayEntryType.h"
 
-/**
- *
- * @author Mitchell
- */
+//TODO: NumberArray appears unused; replace with namespace?
 class NumberArray : public ArrayData{
 
 public:

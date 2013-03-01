@@ -11,10 +11,7 @@
 #include "networktables2/type/ArrayData.h"
 #include "networktables2/type/ArrayEntryType.h"
 
-/**
- *
- * @author Mitchell
- */
+//TODO: BooleanArray appears unused; replace with namespace?
 class BooleanArray : public ArrayData{
 
 public:
@@ -23,7 +20,7 @@ public:
 
 
     BooleanArray();
-    
+
     bool get(int index);
     void set(int index, bool value);
     void add(bool value);
