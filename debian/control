@@ -1,7 +1,7 @@
 Source: wpilib
 Priority: extra
 Maintainer: Robert Blair Mason Jr. <rbmj@verizon.net>
-Build-Depends: debhelper (>= 8.0.0), cmake, powerpc-wrs-vxworks-gcc, powerpc-wrs-vxworks-buildscripts
+Build-Depends: debhelper (>= 8.0.0), cmake, powerpc-wrs-vxworks-gcc, frc-buildscripts
 Standards-Version: 3.9.3
 Section: libs
 Homepage: http://firstforge.wpi.edu/sf/sfmain/do/viewProject/projects.wpilib
