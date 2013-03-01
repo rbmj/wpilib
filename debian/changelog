@@ -1,3 +1,10 @@
+wpilib (2013.2-1) unstable; urgency=low
+
+  * First Mid-season update.
+  * 
+
+ -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Fri, 01 Mar 2013 11:05:14 -0500
+
 wpilib (2013.1-1) unstable; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
