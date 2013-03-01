@@ -12,10 +12,7 @@
 #include "networktables2/type/ArrayData.h"
 #include "networktables2/type/ArrayEntryType.h"
 
-/**
- *
- * @author Mitchell
- */
+//TODO: StringArray appears unused; replace with namespace?
 class StringArray : public ArrayData{
 
 public:

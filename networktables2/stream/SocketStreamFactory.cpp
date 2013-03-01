@@ -21,6 +21,7 @@
 		#include <sys/un.h>
                 #include <netdb.h>
 		#include <netinet/in.h>
+		#include <netinet/tcp.h>
 	#endif
 #endif
 #include "networktables2/stream/FDIOStream.h"

@@ -74,6 +74,7 @@ void ArrayEntryType::deleteValue(EntryValue value){
 }
 
 EntryValue ArrayEntryType::internalizeValue(std::string& key, ComplexData& externalRepresentation, EntryValue currentInteralValue) {
+	// TODO: Argument 'key' appears unused.
 	ArrayData& externalArrayData = (ArrayData&)externalRepresentation;
 	ArrayEntryData* internalArray = (ArrayEntryData*) currentInteralValue.ptr;
 	if(internalArray != NULL && internalArray->length==externalArrayData.size()){
