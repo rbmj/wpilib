@@ -17,7 +17,7 @@ else
 fi
 unset TMP
 
-BUILDDIR="$CURDIR/../build-wpilib"
+BUILDDIR="$CURDIR/build"
 NEWSRCDIR="$BUILDDIR/$PKG-$VERSION"
 ORIG_ARCHIVE="$BUILDDIR/${PKG}_$VERSION.orig.tar.gz"
 
