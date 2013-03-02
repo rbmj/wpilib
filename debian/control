@@ -9,6 +9,7 @@ Homepage: http://firstforge.wpi.edu/sf/sfmain/do/viewProject/projects.wpilib
 Package: wpilib
 Section: libs
 Architecture: all
+Pre-Depends: wrs-headers
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: powerpc-wrs-vxworks-gcc, powerpc-wrs-vxworks-buildscripts, cmake
 Description: WPILib for the FIRST Robotics Competition
