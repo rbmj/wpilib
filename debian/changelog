@@ -1,3 +1,10 @@
+wpilib (2013.4-1) unstable; urgency=low
+
+  * Mandatory Competition update.
+  * 
+
+ -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Tue, 05 Mar 2013 17:19:19 -0500
+
 wpilib (2013.3-1) unstable; urgency=low
 
   * Second Mid-season update.
