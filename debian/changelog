@@ -1,3 +1,10 @@
+wpilib (2013.4-2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * 
+
+ -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Tue, 26 Mar 2013 10:05:08 -0400
+
 wpilib (2013.4-1) unstable; urgency=low
 
   * Mandatory Competition update.
@@ -21,6 +28,7 @@ wpilib (2013.2-1) unstable; urgency=low
 
 wpilib (2013.1-1) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Non-maintainer upload.
+  * 
 
  -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Wed, 09 Jan 2013 22:38:39 -0500
