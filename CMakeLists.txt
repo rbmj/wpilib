@@ -5,7 +5,7 @@ project(WPILib)
 set(HEADER_DIR include/WPILib)
 set(LIB_NAME wpilib)
 set(LIB_DIR lib)
-set(VERSION "2013.1")
+set(VERSION "2013.4")
 
 configure_file(WPILibConfig.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfig.cmake @ONLY)
 configure_file(WPILibConfigVersion.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake @ONLY)
