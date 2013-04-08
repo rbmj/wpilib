@@ -23,6 +23,7 @@ class IRemoteConnectionListener;
  */
 class IRemoteConnectionListener {
 public:
+	virtual ~IRemoteConnectionListener(){}
 	/**
 	 * Called when an IRemote is connected
 	 * @param remote the object that connected

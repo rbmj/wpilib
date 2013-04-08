@@ -353,7 +353,7 @@ int AxisCameraParams::GetMaxFPS()
  */
 int AxisCameraParams::UpdateCamParam(const char* param)
 {
-	char *requestString =
+	const char *requestString =
 		"GET /axis-cgi/admin/param.cgi?action=update&%s HTTP/1.1\n\
 User-Agent: HTTPStreamClient\n\
 Connection: Keep-Alive\n\
@@ -378,7 +378,7 @@ Authorization: Basic RlJDOkZSQw==\n\n";
  */
 int AxisCameraParams::ReadCamParams()
 {
-	char * requestString =
+	const char * requestString =
 		"GET /axis-cgi/admin/param.cgi?action=list HTTP/1.1\n\
 User-Agent: HTTPStreamClient\n\
 Connection: Keep-Alive\n\

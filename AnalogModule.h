@@ -25,7 +25,7 @@ public:
 	static const long kTimebase = 40000000; ///< 40 MHz clock
 	static const long kDefaultOversampleBits = 0;
 	static const long kDefaultAverageBits = 7;
-	static const float kDefaultSampleRate = 50000.0;
+	static constexpr float kDefaultSampleRate = 50000.0;
 
 	void SetSampleRate(float samplesPerSecond);
 	float GetSampleRate();

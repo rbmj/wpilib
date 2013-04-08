@@ -24,13 +24,14 @@
 #define kFullMessageIDMask (CAN_MSGID_API_M | CAN_MSGID_MFR_M | CAN_MSGID_DTYPE_M)
 
 const INT32 CANJaguar::kControllerRate;
-const double CANJaguar::kApproxBusVoltage;
+constexpr double CANJaguar::kApproxBusVoltage;
 
 /**
  * Common initialization code called by all constructors.
  */
 void CANJaguar::InitCANJaguar()
 {
+	m_table = NULL;
 	m_transactionSemaphore = semMCreate(SEM_Q_PRIORITY | SEM_INVERSION_SAFE | SEM_DELETE_SAFE);
 	if (m_deviceNumber < 1 || m_deviceNumber > 63)
 	{
@@ -1248,11 +1249,15 @@ void CANJaguar::UpdateTable() {
 }
 
 void CANJaguar::StartLiveWindowMode() {
-	m_table->AddTableListener("Value", this, true);
+	if (m_table != NULL) {
+		m_table->AddTableListener("Value", this, true);
+	}
 }
 
 void CANJaguar::StopLiveWindowMode() {
-	m_table->RemoveTableListener(this);
+	if (m_table != NULL) {
+		m_table->RemoveTableListener(this);
+	}
 }
 
 std::string CANJaguar::GetSmartDashboardType() {

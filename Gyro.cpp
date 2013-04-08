@@ -14,9 +14,9 @@
 
 const UINT32 Gyro::kOversampleBits;
 const UINT32 Gyro::kAverageBits;
-const float Gyro::kSamplesPerSecond;
-const float Gyro::kCalibrationSampleTime;
-const float Gyro::kDefaultVoltsPerDegreePerSecond;
+constexpr float Gyro::kSamplesPerSecond;
+constexpr float Gyro::kCalibrationSampleTime;
+constexpr float Gyro::kDefaultVoltsPerDegreePerSecond;
 
 /**
  * Initialize the gyro.
@@ -28,6 +28,7 @@ const float Gyro::kDefaultVoltsPerDegreePerSecond;
  */
 void Gyro::InitGyro()
 {
+	m_table = NULL;
 	if (!m_analog->IsAccumulatorChannel())
 	{
 		wpi_setWPIErrorWithContext(ParameterOutOfRange,

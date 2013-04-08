@@ -9,27 +9,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-SRCDIR=$(CURDIR)
-BUILDDIR=$(CURDIR)/../build-wpilib
-TOOLCHAIN_PREFIX=/usr/powerpc-wrs-vxworks
+export WIND_BASE=/usr/powerpc-wrs-vxworks
 
 %:
 	dh $@ 
-
-override_dh_auto_clean:
-	[ ! -d $(BUILDDIR) ] || rm -rf $(BUILDDIR)
-
-override_dh_auto_configure:
-	[ -d $(BUILDDIR) ] || mkdir $(BUILDDIR)
-	cd $(BUILDDIR) ; frcmake $(SRCDIR)
-
-override_dh_auto_build:
-	cd $(BUILDDIR) ; make
-
-override_dh_auto_install:
-	cd $(BUILDDIR) ; make install DESTDIR=$(SRCDIR)/debian/wpilib
-
-override_dh_strip:
-	# do not strip
-
-

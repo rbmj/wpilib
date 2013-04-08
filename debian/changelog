@@ -1,26 +1,5 @@
-wpilib (2013.4-1) unstable; urgency=low
+frc-wpilib (2013svn3623+1-1) unstable; urgency=low
 
-  * Mandatory Competition update.
-  * 
+  * Initial release
 
- -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Tue, 05 Mar 2013 17:19:19 -0500
-
-wpilib (2013.3-1) unstable; urgency=low
-
-  * Second Mid-season update.
-  * 
-
- -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Fri, 01 Mar 2013 11:26:23 -0500
-
-wpilib (2013.2-1) unstable; urgency=low
-
-  * First Mid-season update.
-  * 
-
- -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Fri, 01 Mar 2013 11:05:14 -0500
-
-wpilib (2013.1-1) unstable; urgency=low
-
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
-
- -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Wed, 09 Jan 2013 22:38:39 -0500
+ -- Patrick Plenefisch <phplenefisch@wpi.edu>  Fri, 22 Mar 2013 11:55:49 -0400

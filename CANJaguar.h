@@ -30,7 +30,7 @@ class CANJaguar : public MotorSafety,
 public:
 	// The internal PID control loop in the Jaguar runs at 1kHz.
 	static const INT32 kControllerRate = 1000;
-	static const double kApproxBusVoltage = 12.0;
+	static constexpr double kApproxBusVoltage = 12.0;
 
 	typedef enum {kPercentVbus, kCurrent, kSpeed, kPosition, kVoltage} ControlMode;
 	typedef enum {kCurrentFault = 1, kTemperatureFault = 2, kBusVoltageFault = 4, kGateDriverFault = 8} Faults;

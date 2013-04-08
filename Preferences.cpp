@@ -427,7 +427,7 @@ void Preferences::ReadTaskRun()
 			{
 				value = fgetc(file);
 			} while (value == ' ' || value == '\t');
-
+			
 			if (value == '\n' || value == ';')
 			{
 				if (value == '\n')
