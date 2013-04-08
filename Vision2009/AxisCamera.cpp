@@ -203,8 +203,8 @@ int GetImageData(char** imageData, int* numBytes, double* currentImageTimestamp)
 	int success = 0;
 	int readIndex;
 	int	readCount = 10;
-	int cameraImageSize;
-	char *cameraImageString;
+	int cameraImageSize = 0;
+	char *cameraImageString = NULL;
 
 	/* check to see if camera is initialized */
 			

@@ -36,9 +36,9 @@ void DefaultEntryTypes::DOUBLE_t::sendValue(EntryValue eValue, DataIOStream& os)
 	}
 }
 EntryValue DefaultEntryTypes::DOUBLE_t::readValue(DataIOStream& is) {
-	uint64_t value;
+	uint64_t value = 0;
 	
-	for(int i = 0; i<8; ++i){
+	for(size_t i = 0; i < sizeof(value); ++i){
 		value<<=8;
 		value |= (is.readByte()&0xFF);
 	}
