@@ -24,7 +24,7 @@ protected:
 	static const UINT8 kPowerCtlRegister = 0x2D;
 	static const UINT8 kDataFormatRegister = 0x31;
 	static const UINT8 kDataRegister = 0x32;
-	static const double kGsPerLSB = 0.00390625;
+	static constexpr double kGsPerLSB = 0.00390625;
 	enum PowerCtlFields {kPowerCtl_Link=0x20, kPowerCtl_AutoSleep=0x10, kPowerCtl_Measure=0x08, kPowerCtl_Sleep=0x04};
 	enum DataFormatFields {kDataFormat_SelfTest=0x80, kDataFormat_SPI=0x40, kDataFormat_IntInvert=0x20,
 		kDataFormat_FullRes=0x08, kDataFormat_Justify=0x04};

@@ -13,7 +13,7 @@ const UINT8 ADXL345_I2C::kAddress;
 const UINT8 ADXL345_I2C::kPowerCtlRegister;
 const UINT8 ADXL345_I2C::kDataFormatRegister;
 const UINT8 ADXL345_I2C::kDataRegister;
-const double ADXL345_I2C::kGsPerLSB;
+constexpr double ADXL345_I2C::kGsPerLSB;
 
 /**
  * Constructor.

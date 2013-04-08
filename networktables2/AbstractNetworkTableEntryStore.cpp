@@ -9,8 +9,6 @@
 #include "networktables2/TableKeyExistsWithDifferentTypeException.h"
 #include <map>
 #include <vector>
-#include <iostream>
-#include <stdio.h>
 
 	AbstractNetworkTableEntryStore::AbstractNetworkTableEntryStore(TableListenerManager& lstnManager): 
 			listenerManager(lstnManager){

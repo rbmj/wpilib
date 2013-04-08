@@ -105,7 +105,7 @@ private:
 	static DriverStation *m_instance;
 	static UINT8 m_updateNumber;
 	///< TODO: Get rid of this and use the semaphore signaling
-	static const float kUpdatePeriod = 0.02;
+	static constexpr float kUpdatePeriod = 0.02;
 
 	void Run();
 

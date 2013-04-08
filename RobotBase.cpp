@@ -14,6 +14,7 @@
 #include <moduleLib.h>
 #include <taskLib.h>
 #include <unldLib.h>
+#include <cstring>
 
 RobotBase* RobotBase::m_instance = NULL;
 
@@ -164,7 +165,7 @@ void RobotBase::startRobotTask(FUNCPTR factory)
 #endif
 
 	// Check for startup code already running
-	INT32 oldId = taskNameToId("FRC_RobotTask");
+	INT32 oldId = taskNameToId(const_cast<char*>("FRC_RobotTask"));
 	if (oldId != ERROR)
 	{
 		// Find the startup code module.

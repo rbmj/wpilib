@@ -25,47 +25,51 @@ static Resource *quadEncoders = NULL;
  */
 void Encoder::InitEncoder(bool reverseDirection, EncodingType encodingType)
 {
+	m_table = NULL;
 	m_encodingType = encodingType;
 	tRioStatusCode localStatus = NiFpga_Status_Success;
-	UINT32 index;
 	switch (encodingType)
 	{
-	case k4X:
-		Resource::CreateResourceObject(&quadEncoders, tEncoder::kNumSystems);
-		index = quadEncoders->Allocate("4X Encoder");
-		if (index == ~0ul)
+		case k4X:
 		{
-			CloneError(quadEncoders);
-			return;
+			Resource::CreateResourceObject(&quadEncoders, tEncoder::kNumSystems);
+			UINT32 index = quadEncoders->Allocate("4X Encoder");
+			if (index == ~0ul)
+			{
+				CloneError(quadEncoders);
+				return;
+			}
+			if (m_aSource->StatusIsFatal())
+			{
+				CloneError(m_aSource);
+				return;
+			}
+			if (m_bSource->StatusIsFatal())
+			{
+				CloneError(m_bSource);
+				return;
+			}
+			m_index = index;
+			m_encoder = tEncoder::create(m_index, &localStatus);
+			m_encoder->writeConfig_ASource_Module(m_aSource->GetModuleForRouting(), &localStatus);
+			m_encoder->writeConfig_ASource_Channel(m_aSource->GetChannelForRouting(), &localStatus);
+			m_encoder->writeConfig_ASource_AnalogTrigger(m_aSource->GetAnalogTriggerForRouting(), &localStatus);
+			m_encoder->writeConfig_BSource_Module(m_bSource->GetModuleForRouting(), &localStatus);
+			m_encoder->writeConfig_BSource_Channel(m_bSource->GetChannelForRouting(), &localStatus);
+			m_encoder->writeConfig_BSource_AnalogTrigger(m_bSource->GetAnalogTriggerForRouting(), &localStatus);
+			m_encoder->strobeReset(&localStatus);
+			m_encoder->writeConfig_Reverse(reverseDirection, &localStatus);
+			m_encoder->writeTimerConfig_AverageSize(4, &localStatus);
+			m_counter = NULL;
+			break;
 		}
-		if (m_aSource->StatusIsFatal())
+		case k1X:
+		case k2X:
 		{
-			CloneError(m_aSource);
-			return;
+			m_counter = new Counter(m_encodingType, m_aSource, m_bSource, reverseDirection);
+			m_index = m_counter->GetIndex();
+			break;
 		}
-		if (m_bSource->StatusIsFatal())
-		{
-			CloneError(m_bSource);
-			return;
-		}
-		m_index = index;
-		m_encoder = tEncoder::create(m_index, &localStatus);
-		m_encoder->writeConfig_ASource_Module(m_aSource->GetModuleForRouting(), &localStatus);
-		m_encoder->writeConfig_ASource_Channel(m_aSource->GetChannelForRouting(), &localStatus);
-		m_encoder->writeConfig_ASource_AnalogTrigger(m_aSource->GetAnalogTriggerForRouting(), &localStatus);
-		m_encoder->writeConfig_BSource_Module(m_bSource->GetModuleForRouting(), &localStatus);
-		m_encoder->writeConfig_BSource_Channel(m_bSource->GetChannelForRouting(), &localStatus);
-		m_encoder->writeConfig_BSource_AnalogTrigger(m_bSource->GetAnalogTriggerForRouting(), &localStatus);
-		m_encoder->strobeReset(&localStatus);
-		m_encoder->writeConfig_Reverse(reverseDirection, &localStatus);
-		m_encoder->writeTimerConfig_AverageSize(4, &localStatus);
-		m_counter = NULL;
-		break;
-	case k1X:
-	case k2X:
-		m_counter = new Counter(m_encodingType, m_aSource, m_bSource, reverseDirection);
-		m_index = m_counter->GetIndex();
-		break;
 	}
 	m_distancePerPulse = 1.0;
 	m_pidSource = kDistance;

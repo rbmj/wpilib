@@ -12,7 +12,7 @@
 #include <hostLib.h>
 #include <inetLib.h>
 #include <sockLib.h>
-#include <string.h>
+#include <cstring>
 
 #include "NetworkCommunication/UsageReporting.h"
 #include "Task.h"

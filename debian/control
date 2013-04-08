@@ -1,10 +1,11 @@
-Source: wpilib
+Source: frc-wpilib
 Priority: extra
-Maintainer: Robert Blair Mason Jr. <rbmj@verizon.net>
 Build-Depends: debhelper (>= 8.0.0), cmake, gcc-powerpc-wrs-vxworks, frc-buildscripts
 Standards-Version: 3.9.3
 Section: libs
 Homepage: http://firstforge.wpi.edu/sf/sfmain/do/viewProject/projects.wpilib
+Vcs-Svn: http://firstforge.wpi.edu/svn/repos/wpilibcpp
+Vcs-Browser: http://firstforge.wpi.edu/integration/viewcvs/viewcvs.cgi/?root=wpilibcpp&system=exsy1002
 
 Package: wpilib
 Section: libs

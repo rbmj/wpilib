@@ -6,7 +6,7 @@
 
 #include "Watchdog.h"
 
-const double Watchdog::kDefaultWatchdogExpiration;
+constexpr double Watchdog::kDefaultWatchdogExpiration;
 
 /**
  * The Watchdog is born.

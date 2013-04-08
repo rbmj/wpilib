@@ -7,13 +7,12 @@
 #include "Error.h"
 
 #include <taskLib.h>
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
 #include "NetworkCommunication/FRCComm.h"
 #include "Timer.h"
 #include "Utility.h"
-
 bool Error::m_stackTraceEnabled = false;
 bool Error::m_suspendOnErrorEnabled = false;
 

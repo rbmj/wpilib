@@ -35,8 +35,8 @@
 #include "Timer.h"
 #include "VisionAPI.h"
 
-#include <string.h> //for bzero, strstr, etc.
-#include <stdio.h> //fprintf
+#include <cstring>
+#include <cstdio>
 
 /** packet size */
 #define DEFAULT_PACKET_SIZE 512
@@ -289,7 +289,7 @@ int GetCameraMetric(FrcvCameraMetric metric)
  * @param socket Socket to close
  * @return error
  */
-int CameraCloseSocket(char *errstring, int socket)
+int CameraCloseSocket(const char *errstring, int socket)
 {
 	DPRINTF (LOG_CRITICAL, "Closing socket - CAMERA ERROR: %s", errstring );
 	close (socket);
@@ -488,12 +488,12 @@ static int CameraOpenSocketAndIssueAuthorizedRequest(const char* serverName, con
  */
 int ConfigureCamera(char *configString){
 	char funcName[]="ConfigureCamera";
-	char *serverName = "192.168.0.90";		/* camera @ */ 
+	const char *serverName = "192.168.0.90";		/* camera @ */
 	int success = 0;
 	int camSock = 0;    
 	
 	/* Generate camera configuration string */
-	char * getStr1 = 
+	const char * getStr1 =
 		"GET /axis-cgi/admin/param.cgi?action=update&ImageSource.I0.Sensor.";
 	
 	char cameraRequest[strlen(getStr1) + strlen(configString)];
@@ -528,12 +528,12 @@ int ConfigureCamera(char *configString){
  * @return success: 0=failure; 1=success
  */
 int GetCameraSetting(char *configString, char *cameraResponse){
-	char *serverName = "192.168.0.90";		/* camera @ */ 
+	const char *serverName = "192.168.0.90";		/* camera @ */
 	int success = 0;
 	int camSock = 0;    
 	
 	/* Generate camera request string */
-	char * getStr1 = 
+	const char * getStr1 =
 		"GET /axis-cgi/admin/param.cgi?action=list&group=ImageSource.I0.Sensor.";
 	char cameraRequest[strlen(getStr1) + strlen(configString)];
     sprintf (cameraRequest, "%s%s",	getStr1, configString);
@@ -561,12 +561,12 @@ int GetCameraSetting(char *configString, char *cameraResponse){
  * @return success: 0=failure; 1=success
  */
 int GetImageSetting(char *configString, char *cameraResponse){
-	char *serverName = "192.168.0.90";		/* camera @ */ 
+	const char *serverName = "192.168.0.90";		/* camera @ */
 	int success = 0;
 	int camSock = 0;    
 	
 	/* Generate camera request string */
-	char *getStr1 = "GET /axis-cgi/admin/param.cgi?action=list&group=Image.I0.Appearance.";
+	const char *getStr1 = "GET /axis-cgi/admin/param.cgi?action=list&group=Image.I0.Appearance.";
 	char cameraRequest[strlen(getStr1) + strlen(configString)];
     sprintf (cameraRequest, "%s%s",	getStr1, configString);
 	DPRINTF(LOG_DEBUG, "camera configuration string: \n%s", cameraRequest);
@@ -599,7 +599,7 @@ int GetImageSetting(char *configString, char *cameraResponse){
 int cameraJPEGServer(int frames, int compression, ImageResolution resolution, ImageRotation rotation)
 {
 	char funcName[]="cameraJPEGServer";
-	char *serverName = "192.168.0.90";		/* camera @ */ 
+	char serverName[] = "192.168.0.90";		/* camera @ */
 	cont = 1;
 	int errorCode = 0;
 	int printCounter = 0;
@@ -630,14 +630,14 @@ int cameraJPEGServer(int frames, int compression, ImageResolution resolution, Im
 	/* Generate camera initialization string */
 	/* changed resolution to 160x120 from 320x240 */
 	/* supported resolutions are: 640x480, 640x360, 320x240, 160x120 */	
-	char * getStr1 = 
+	const char * getStr1 =
 	"GET /axis-cgi/mjpg/video.cgi?showlength=1&camera=1&";	
 		
 	char insertStr[100];
 	sprintf (insertStr, "des_fps=%i&compression=%i&resolution=%s&rotation=%i", 
 			frames, compression, resStr, (int)rotation);	
 	
-	char * getStr2 = " HTTP/1.1\n\
+	const char * getStr2 = " HTTP/1.1\n\
 User-Agent: HTTPStreamClient\n\
 Host: 192.150.1.100\n\
 Connection: Keep-Alive\n\
@@ -686,7 +686,7 @@ Authorization: Basic %s;\n\n";
 
 	  DPRINTF (LOG_DEBUG, "getting IP" );
 	  if (( (int)(cameraAddr.sin_addr.s_addr = inet_addr (serverName) ) == ERROR) &&
-		( (int)(cameraAddr.sin_addr.s_addr = hostGetByName (serverName) ) == ERROR)) 
+		( (int)(cameraAddr.sin_addr.s_addr = hostGetByName (serverName) ) == ERROR))
 	  {	
 		  CameraCloseSocket("Failed to get IP, check hostname or IP", camSock);
 		continue;
@@ -717,8 +717,8 @@ Authorization: Basic %s;\n\n";
 	//DPRINTF (LOG_DEBUG, "reading header" ); 
 	/* Find content-length, then read that many bytes */
 	int counter = 2;
-	char* contentString = "Content-Length: ";
-	char* authorizeString = "200 OK";
+	const char* contentString = "Content-Length: ";
+	const char* authorizeString = "200 OK";
 	
 #define MEASURE_TIME 0
 #if MEASURE_TIME
@@ -849,10 +849,14 @@ Authorization: Basic %s;\n\n";
 		/* signal a listening task */
 		if (globalCamera.readerPID) {
 			if (taskKill (globalCamera.readerPID,SIGUSR1) == OK)
+			{
 				DPRINTF (LOG_DEBUG, "SIGNALING PID= %i", globalCamera.readerPID);
+			}
 			else
+			{
 				globalCamera.cameraMetrics[CAM_PID_SIGNAL_ERR]++;
 				DPRINTF (LOG_DEBUG, "ERROR SIGNALING PID= %i", globalCamera.readerPID);
+			}
 		}
 
 		globalCamera.cameraMetrics[CAM_NUM_IMAGE]++;	

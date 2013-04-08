@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 wpilib (2013.4-2) unstable; urgency=low
 
   * Non-maintainer upload.
@@ -6,10 +7,13 @@ wpilib (2013.4-2) unstable; urgency=low
  -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Tue, 26 Mar 2013 10:05:08 -0400
 
 wpilib (2013.4-1) unstable; urgency=low
+=======
+frc-wpilib (2013svn3623+1-1) unstable; urgency=low
+>>>>>>> upstream
 
-  * Mandatory Competition update.
-  * 
+  * Initial release
 
+<<<<<<< HEAD
  -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Tue, 05 Mar 2013 17:19:19 -0500
 
 wpilib (2013.3-1) unstable; urgency=low
@@ -32,3 +36,6 @@ wpilib (2013.1-1) unstable; urgency=low
   * 
 
  -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Wed, 09 Jan 2013 22:38:39 -0500
+=======
+ -- Patrick Plenefisch <phplenefisch@wpi.edu>  Fri, 22 Mar 2013 11:55:49 -0400
+>>>>>>> upstream

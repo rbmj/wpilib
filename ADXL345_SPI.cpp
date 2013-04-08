@@ -13,7 +13,7 @@
 const UINT8 ADXL345_SPI::kPowerCtlRegister;
 const UINT8 ADXL345_SPI::kDataFormatRegister;
 const UINT8 ADXL345_SPI::kDataRegister;
-const double ADXL345_SPI::kGsPerLSB;
+constexpr double ADXL345_SPI::kGsPerLSB;
 
 /**
  * Constructor.

@@ -234,6 +234,7 @@ Authorization: Basic RlJDOkZSQw==\n\n";
 			ReadImagesFromCamera();
 		}
 	}
+	return 0;
 }
 
 /**

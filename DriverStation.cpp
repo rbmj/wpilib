@@ -19,7 +19,7 @@ const UINT32 DriverStation::kBatteryModuleNumber;
 const UINT32 DriverStation::kBatteryChannel;
 const UINT32 DriverStation::kJoystickPorts;
 const UINT32 DriverStation::kJoystickAxes;
-const float DriverStation::kUpdatePeriod;
+constexpr float DriverStation::kUpdatePeriod;
 DriverStation* DriverStation::m_instance = NULL;
 UINT8 DriverStation::m_updateNumber = 0;
 

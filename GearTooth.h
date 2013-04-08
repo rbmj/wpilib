@@ -19,7 +19,7 @@ class GearTooth : public Counter
 {
 public:
 	/// 55 uSec for threshold
-	static const double kGearToothThreshold = 55e-6;
+	static constexpr double kGearToothThreshold = 55e-6;
 	GearTooth(UINT32 channel, bool directionSensitive = false);
 	GearTooth(UINT8 moduleNumber, UINT32 channel, bool directionSensitive = false);
 	GearTooth(DigitalSource *source, bool directionSensitive = false);

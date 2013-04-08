@@ -13,7 +13,7 @@
 const long AnalogModule::kTimebase; ///< 40 MHz clock
 const long AnalogModule::kDefaultOversampleBits;
 const long AnalogModule::kDefaultAverageBits;
-const float AnalogModule::kDefaultSampleRate;
+constexpr float AnalogModule::kDefaultSampleRate;
 SEM_ID AnalogModule::m_registerWindowSemaphore = NULL;
 
 /**
