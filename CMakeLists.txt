@@ -17,11 +17,16 @@ set(WPI_INCLUDES ${CMAKE_SOURCE_DIR})
 set(WPI_LIBS "")
 add_library(${LIB_NAME} ${WPI_SOURCES})
 include_directories(${WPI_INCLUDES})
-target_link_libraries(wpilib ${WPI_LIBS})
-install(TARGETS ${LIB_NAME} LIBRARY DESTINATION ${LIB_DIR} ARCHIVE DESTINATION ${LIB_DIR} RUNTIME DESTINATION bin)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/ DESTINATION ${HEADER_DIR}
+target_link_libraries(${LIB_NAME} ${WPI_LIBS})
+install(TARGETS ${LIB_NAME} 
+	LIBRARY DESTINATION ${LIB_DIR} 
+	ARCHIVE DESTINATION ${LIB_DIR} 
+	RUNTIME DESTINATION bin)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/ 
+	DESTINATION ${HEADER_DIR}
 	FILES_MATCHING
 		PATTERN *.h
+		PATTERN *.cpp
 		PATTERN ".git" EXCLUDE
 		PATTERN ".settings" EXCLUDE
 		PATTERN "${HEADER_DIR}" EXCLUDE #prevent infinite recurse case
@@ -31,4 +36,3 @@ install(FILES
    "${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake"
    DESTINATION "share/cmake/"
 )
-
