@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 2.8)
 
 project(WPILib)
 
-set(CMAKE_CXX_FLAGS "-g -Og -std=c++11")
+set(CMAKE_CXX_FLAGS "-g -Og -std=c++11 -Wall -fno-permissive")
 
 set(HEADER_DIR include/WPILib)
-set(LIB_NAME wpilib)
+set(LIB_NAME WPILib)
 set(LIB_DIR lib)
 set(VERSION "2013.4")
 
@@ -29,6 +29,6 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/ DESTINATION ${HEADER_DIR}
 install(FILES
    "${PROJECT_BINARY_DIR}/WPILibConfig.cmake"
    "${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake"
-   DESTINATION "share/WPILib/cmake"
+   DESTINATION "share/cmake/"
 )
 
