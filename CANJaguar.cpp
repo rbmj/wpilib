@@ -1238,7 +1238,7 @@ void CANJaguar::StopMotor()
 	DisableControl();
 }
 
-void CANJaguar::ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew) {
+void CANJaguar::ValueChanged(EntryValue value) {
 	Set(value.f);
 }
 

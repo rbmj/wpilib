@@ -107,7 +107,7 @@ void Notifier::UpdateAlarm()
  * as its scheduled time is after the current time. Then the item is removed or 
  * rescheduled (repetitive events) in the queue.
  */
-void Notifier::ProcessQueue(uint32_t mask, void *params)
+void Notifier::ProcessQueue()
 {
 	Notifier *current;
 	while (true)				// keep processing past events until no more

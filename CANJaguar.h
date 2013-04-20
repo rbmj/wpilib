@@ -119,7 +119,7 @@ protected:
 
 	MotorSafetyHelper *m_safetyHelper;
 
-	void ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew);
+	void ValueChanged(EntryValue value);
 	void UpdateTable();
 	void StartLiveWindowMode();
 	void StopLiveWindowMode();

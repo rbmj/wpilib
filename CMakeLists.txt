@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(WPILib)
 
-set(CMAKE_CXX_FLAGS "-g -Og -std=c++11 -Wall -Wextra -fno-permissive")
+set(CMAKE_CXX_FLAGS "-g -Og -std=c++11 -Wall -Wextra -fpermissive")
 
 set(HEADER_DIR include/WPILib)
 set(LIB_NAME WPILib)

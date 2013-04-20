@@ -67,7 +67,7 @@ Jaguar::~Jaguar()
  * @param speed The speed value between -1.0 and 1.0 to set.
  * @param syncGroup Unused interface.
  */
-void Jaguar::Set(float speed, UINT8 syncGroup)
+void Jaguar::Set(float speed)
 {
 	SetSpeed(speed);
 }

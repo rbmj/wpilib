@@ -18,7 +18,6 @@ class PIDCommand : public Command, public PIDOutput, public PIDSource
 public:
 	PIDCommand(const char *name, double p, double i, double d);
 	PIDCommand(const char *name, double p, double i, double d, double period);
-	PIDCommand(const char *name, double p, double i, double d, double f, double perioid);
 	PIDCommand(double p, double i, double d);
 	PIDCommand(double p, double i, double d, double period);
 	PIDCommand(double p, double i, double d, double f, double period);
