@@ -52,8 +52,8 @@ void RobotDrive::InitRobotDrive() {
 RobotDrive::RobotDrive(UINT32 leftMotorChannel, UINT32 rightMotorChannel)
 {
 	InitRobotDrive();
-	m_rearLeftMotor = new Jaguar(leftMotorChannel);
-	m_rearRightMotor = new Jaguar(rightMotorChannel);
+	m_rearLeftMotor = new SpeedController(leftMotorChannel);
+	m_rearRightMotor = new SpeedController(rightMotorChannel);
 	for (INT32 i=0; i < kMaxNumberOfMotors; i++)
 	{
 		m_invertedMotors[i] = 1;
@@ -76,10 +76,10 @@ RobotDrive::RobotDrive(UINT32 frontLeftMotor, UINT32 rearLeftMotor,
 		UINT32 frontRightMotor, UINT32 rearRightMotor)
 {
 	InitRobotDrive();
-	m_rearLeftMotor = new Jaguar(rearLeftMotor);
-	m_rearRightMotor = new Jaguar(rearRightMotor);
-	m_frontLeftMotor = new Jaguar(frontLeftMotor);
-	m_frontRightMotor = new Jaguar(frontRightMotor);
+	m_rearLeftMotor = new SpeedController(rearLeftMotor);
+	m_rearRightMotor = new SpeedController(rearRightMotor);
+	m_frontLeftMotor = new SpeedController(frontLeftMotor);
+	m_frontRightMotor = new SpeedController(frontRightMotor);
 	for (INT32 i=0; i < kMaxNumberOfMotors; i++)
 	{
 		m_invertedMotors[i] = 1;
