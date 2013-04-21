@@ -5,10 +5,9 @@ project(WPILib)
 set(CMAKE_CXX_FLAGS "-g -Og -std=c++11 -Wall -fpermissive")
 
 set(HEADER_DIR include/WPILib)
-set(LIB_NAME WPILib)
+set(LIB_NAME wpiLib)
 set(LIB_DIR lib)
 set(VERSION "2013.4")
-set(CMAKE_INSTALL_PREFIX "/usr/powerpc-wrs-vxworks")
 
 configure_file(WPILibConfig.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfig.cmake @ONLY)
 configure_file(WPILibConfigVersion.cmake.in ${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake @ONLY)
@@ -35,5 +34,5 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/
 install(FILES
    "${PROJECT_BINARY_DIR}/WPILibConfig.cmake"
    "${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake"
-   DESTINATION "share/cmake/"
+   DESTINATION "share/WPILib/cmake/"
 )
