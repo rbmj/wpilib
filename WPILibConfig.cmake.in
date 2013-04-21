@@ -1,6 +1,6 @@
 #Set Include Dirs
 
-if (WIN32)
+if (${CMAKE_HOST_WIN32})
     GET_FILENAME_COMPONENT(INSTALLDIR
         "[HKEY_LOCAL_MACHINE\\Software\\FIRST\\FRCToolchain;INSTALLDIR]"
         ABSOLUTE CACHE)
