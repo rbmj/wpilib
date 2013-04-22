@@ -5,7 +5,7 @@ project(WPILib)
 set(CMAKE_CXX_FLAGS "-g -Og -std=c++11 -Wall -fpermissive")
 
 set(HEADER_DIR include/WPILib)
-set(LIB_NAME wpiLib)
+set(LIB_NAME wpilib)
 set(LIB_DIR lib)
 set(VERSION "2013.4")
 
