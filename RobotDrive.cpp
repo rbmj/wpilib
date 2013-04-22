@@ -52,8 +52,8 @@ void RobotDrive::InitRobotDrive() {
 RobotDrive::RobotDrive(UINT32 leftMotorChannel, UINT32 rightMotorChannel)
 {
 	InitRobotDrive();
-	m_rearLeftMotor = new SpeedController(leftMotorChannel);
-	m_rearRightMotor = new SpeedController(rightMotorChannel);
+	m_rearLeftMotor = new Jaguar(leftMotorChannel);
+	m_rearRightMotor = new Jaguar(rightMotorChannel);
 	for (INT32 i=0; i < kMaxNumberOfMotors; i++)
 	{
 		m_invertedMotors[i] = 1;
@@ -76,10 +76,10 @@ RobotDrive::RobotDrive(UINT32 frontLeftMotor, UINT32 rearLeftMotor,
 		UINT32 frontRightMotor, UINT32 rearRightMotor)
 {
 	InitRobotDrive();
-	m_rearLeftMotor = new SpeedController(rearLeftMotor);
-	m_rearRightMotor = new SpeedController(rearRightMotor);
-	m_frontLeftMotor = new SpeedController(frontLeftMotor);
-	m_frontRightMotor = new SpeedController(frontRightMotor);
+	m_rearLeftMotor = new Jaguar(rearLeftMotor);
+	m_rearRightMotor = new Jaguar(rearRightMotor);
+	m_frontLeftMotor = new Jaguar(frontLeftMotor);
+	m_frontRightMotor = new Jaguar(frontRightMotor);
 	for (INT32 i=0; i < kMaxNumberOfMotors; i++)
 	{
 		m_invertedMotors[i] = 1;
@@ -507,10 +507,10 @@ void RobotDrive::MecanumDrive_Cartesian(float x, float y, float rotation, float 
 
 	UINT8 syncGroup = 0x80;
 
-	m_frontLeftMotor->Set(wheelSpeeds[kFrontLeftMotor] * m_invertedMotors[kFrontLeftMotor] * m_maxOutput, syncGroup);
-	m_frontRightMotor->Set(wheelSpeeds[kFrontRightMotor] * m_invertedMotors[kFrontRightMotor] * m_maxOutput, syncGroup);
-	m_rearLeftMotor->Set(wheelSpeeds[kRearLeftMotor] * m_invertedMotors[kRearLeftMotor] * m_maxOutput, syncGroup);
-	m_rearRightMotor->Set(wheelSpeeds[kRearRightMotor] * m_invertedMotors[kRearRightMotor] * m_maxOutput, syncGroup);
+	m_frontLeftMotor->Set(wheelSpeeds[kFrontLeftMotor] * m_invertedMotors[kFrontLeftMotor] * m_maxOutput);
+	m_frontRightMotor->Set(wheelSpeeds[kFrontRightMotor] * m_invertedMotors[kFrontRightMotor] * m_maxOutput);
+	m_rearLeftMotor->Set(wheelSpeeds[kRearLeftMotor] * m_invertedMotors[kRearLeftMotor] * m_maxOutput);
+	m_rearRightMotor->Set(wheelSpeeds[kRearRightMotor] * m_invertedMotors[kRearRightMotor] * m_maxOutput);
 
 	CANJaguar::UpdateSyncGroup(syncGroup);
 	
@@ -556,10 +556,10 @@ void RobotDrive::MecanumDrive_Polar(float magnitude, float direction, float rota
 
 	UINT8 syncGroup = 0x80;
 
-	m_frontLeftMotor->Set(wheelSpeeds[kFrontLeftMotor] * m_invertedMotors[kFrontLeftMotor] * m_maxOutput, syncGroup);
-	m_frontRightMotor->Set(wheelSpeeds[kFrontRightMotor] * m_invertedMotors[kFrontRightMotor] * m_maxOutput, syncGroup);
-	m_rearLeftMotor->Set(wheelSpeeds[kRearLeftMotor] * m_invertedMotors[kRearLeftMotor] * m_maxOutput, syncGroup);
-	m_rearRightMotor->Set(wheelSpeeds[kRearRightMotor] * m_invertedMotors[kRearRightMotor] * m_maxOutput, syncGroup);
+	m_frontLeftMotor->Set(wheelSpeeds[kFrontLeftMotor] * m_invertedMotors[kFrontLeftMotor] * m_maxOutput);
+	m_frontRightMotor->Set(wheelSpeeds[kFrontRightMotor] * m_invertedMotors[kFrontRightMotor] * m_maxOutput);
+	m_rearLeftMotor->Set(wheelSpeeds[kRearLeftMotor] * m_invertedMotors[kRearLeftMotor] * m_maxOutput);
+	m_rearRightMotor->Set(wheelSpeeds[kRearRightMotor] * m_invertedMotors[kRearRightMotor] * m_maxOutput);
 
 	CANJaguar::UpdateSyncGroup(syncGroup);
 	
@@ -596,12 +596,12 @@ void RobotDrive::SetLeftRightMotorOutputs(float leftOutput, float rightOutput)
 	UINT8 syncGroup = 0x80;
 
 	if (m_frontLeftMotor != NULL)
-		m_frontLeftMotor->Set(Limit(leftOutput) * m_invertedMotors[kFrontLeftMotor] * m_maxOutput, syncGroup);
-	m_rearLeftMotor->Set(Limit(leftOutput) * m_invertedMotors[kRearLeftMotor] * m_maxOutput, syncGroup);
+		m_frontLeftMotor->Set(Limit(leftOutput) * m_invertedMotors[kFrontLeftMotor] * m_maxOutput);
+	m_rearLeftMotor->Set(Limit(leftOutput) * m_invertedMotors[kRearLeftMotor] * m_maxOutput);
 
 	if (m_frontRightMotor != NULL)
-		m_frontRightMotor->Set(-Limit(rightOutput) * m_invertedMotors[kFrontRightMotor] * m_maxOutput, syncGroup);
-	m_rearRightMotor->Set(-Limit(rightOutput) * m_invertedMotors[kRearRightMotor] * m_maxOutput, syncGroup);
+		m_frontRightMotor->Set(-Limit(rightOutput) * m_invertedMotors[kFrontRightMotor] * m_maxOutput);
+	m_rearRightMotor->Set(-Limit(rightOutput) * m_invertedMotors[kRearRightMotor] * m_maxOutput);
 
 	CANJaguar::UpdateSyncGroup(syncGroup);
 
