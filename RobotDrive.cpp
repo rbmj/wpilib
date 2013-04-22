@@ -7,13 +7,12 @@
 #include "RobotDrive.h"
 
 #include "CANJaguar.h"
-#include "GenericHID.h"
 #include "Joystick.h"
 #include "Jaguar.h"
 #include "NetworkCommunication/UsageReporting.h"
 #include "Utility.h"
 #include "WPIErrors.h"
-#include <math.h>
+#include <cmath>
 
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 
