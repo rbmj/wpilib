@@ -44,17 +44,17 @@ public:
 	UINT32 GetAxisChannel(AxisType axis);
 	void SetAxisChannel(AxisType axis, UINT32 channel); 
 
-	virtual float GetX(JoystickHand hand = kRightHand);
-	virtual float GetY(JoystickHand hand = kRightHand);
+	virtual float GetX();
+	virtual float GetY();
 	virtual float GetZ();
 	virtual float GetTwist();
 	virtual float GetThrottle();
 	virtual float GetAxis(AxisType axis);
 	float GetRawAxis(UINT32 axis);
 
-	virtual bool GetTrigger(JoystickHand hand = kRightHand);
-	virtual bool GetTop(JoystickHand hand = kRightHand);
-	virtual bool GetBumper(JoystickHand hand = kRightHand);
+	virtual bool GetTrigger();
+	virtual bool GetTop();
+	virtual bool GetBumper();
 	virtual bool GetButton(ButtonType button);
 	bool GetRawButton(UINT32 button);
 	static Joystick* GetStickForPort(UINT32 port);

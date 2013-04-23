@@ -101,7 +101,7 @@ Joystick::~Joystick()
  * Get the X value of the joystick.
  * This depends on the mapping of the joystick connected to the current port.
  */
-float Joystick::GetX(JoystickHand hand)
+float Joystick::GetX()
 {
 	return GetRawAxis(m_axes[kXAxis]);
 }
@@ -110,7 +110,7 @@ float Joystick::GetX(JoystickHand hand)
  * Get the Y value of the joystick.
  * This depends on the mapping of the joystick connected to the current port.
  */
-float Joystick::GetY(JoystickHand hand)
+float Joystick::GetY()
 {
 	return GetRawAxis(m_axes[kYAxis]);
 }
@@ -185,7 +185,7 @@ float Joystick::GetAxis(AxisType axis)
  * @param hand This parameter is ignored for the Joystick class and is only here to complete the GenericHID interface.
  * @return The state of the trigger.
  */
-bool Joystick::GetTrigger(JoystickHand hand)
+bool Joystick::GetTrigger()
 {
 	return GetRawButton(m_buttons[kTriggerButton]);
 }
@@ -198,7 +198,7 @@ bool Joystick::GetTrigger(JoystickHand hand)
  * @param hand This parameter is ignored for the Joystick class and is only here to complete the GenericHID interface.
  * @return The state of the top button.
  */
-bool Joystick::GetTop(JoystickHand hand)
+bool Joystick::GetTop()
 {
 	return GetRawButton(m_buttons[kTopButton]);
 }
@@ -207,7 +207,7 @@ bool Joystick::GetTop(JoystickHand hand)
  * This is not supported for the Joystick.
  * This method is only here to complete the GenericHID interface.
  */
-bool Joystick::GetBumper(JoystickHand hand)
+bool Joystick::GetBumper()
 {
 	// Joysticks don't have bumpers.
 	return false;
