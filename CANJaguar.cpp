@@ -110,7 +110,7 @@ CANJaguar::~CANJaguar()
  * @param outputValue The set-point to sent to the motor controller.
  * @param syncGroup The update group to add this Set() to, pending UpdateSyncGroup().  If 0, update immediately.
  */
-void CANJaguar::Set(float outputValue, UINT8 syncGroup)
+void CANJaguar::Set(float outputValue)
 {
 	UINT32 messageID;
 	UINT8 dataBuffer[8];
@@ -157,11 +157,6 @@ void CANJaguar::Set(float outputValue, UINT8 syncGroup)
 		break;
 	default:
 		return;
-	}
-	if (syncGroup != 0)
-	{
-		dataBuffer[dataSize] = syncGroup;
-		dataSize++;
 	}
 	setTransaction(messageID, dataBuffer, dataSize);
 	if (m_safetyHelper) m_safetyHelper->Feed();
