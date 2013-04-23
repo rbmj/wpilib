@@ -462,7 +462,7 @@ ITable* Command::GetTable(){
 	return m_table;
 }
 
-void Command::ValueChanged(EntryValue value)
+void Command::ValueChanged(ITable* source, const std::string&, EntryValue value, bool isNew)
 {
 	if (value.b){
 		if(!IsRunning())

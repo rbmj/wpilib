@@ -156,7 +156,7 @@ public:
 	virtual void InitTable(ITable* table);
 	virtual ITable* GetTable();
 	virtual std::string GetSmartDashboardType();
-	virtual void ValueChanged(EntryValue value);
+	virtual void ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew);
 protected:
 	ITable* m_table;
 };

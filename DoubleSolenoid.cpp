@@ -142,7 +142,7 @@ DoubleSolenoid::Value DoubleSolenoid::Get()
 
 
 
-void DoubleSolenoid::ValueChanged(EntryValue value) {
+void DoubleSolenoid::ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew) {
 	Value lvalue = kOff;
 	if (strcmp((char*)value.ptr, "Forward") == 0)
 		lvalue = kForward;
