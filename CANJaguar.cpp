@@ -23,8 +23,13 @@
 
 #define kFullMessageIDMask (CAN_MSGID_API_M | CAN_MSGID_MFR_M | CAN_MSGID_DTYPE_M)
 
-const INT32 CANJaguar::kControllerRate;
+#if __cplusplus >= 201103L
+constexpr INT32 CANJaguar::kControllerRate;
 constexpr double CANJaguar::kApproxBusVoltage;
+#else
+const INT32 CANJaguar::kControllerRate;
+const double CANJaguar::kApproxBusVoltage;
+#endif
 
 /**
  * Common initialization code called by all constructors.
@@ -158,7 +163,7 @@ void CANJaguar::Set(float outputValue, UINT8 syncGroup)
 	default:
 		return;
 	}
-	if (syncGroup != 0)
+	if( syncGroup != 0 )
 	{
 		dataBuffer[dataSize] = syncGroup;
 		dataSize++;
@@ -333,10 +338,17 @@ INT32 CANJaguar::unpackINT32(UINT8 *buffer)
  */
 INT32 CANJaguar::sendMessage(UINT32 messageID, const UINT8 *data, UINT8 dataSize)
 {
+#if __cplusplus >= 201103L
+	static constexpr UINT32 kTrustedMessages[] = {
+			LM_API_VOLT_T_EN, LM_API_VOLT_T_SET, LM_API_SPD_T_EN, LM_API_SPD_T_SET,
+			LM_API_VCOMP_T_EN, LM_API_VCOMP_T_SET, LM_API_POS_T_EN, LM_API_POS_T_SET,
+			LM_API_ICTRL_T_EN, LM_API_ICTRL_T_SET};
+#else
 	static const UINT32 kTrustedMessages[] = {
 			LM_API_VOLT_T_EN, LM_API_VOLT_T_SET, LM_API_SPD_T_EN, LM_API_SPD_T_SET,
 			LM_API_VCOMP_T_EN, LM_API_VCOMP_T_SET, LM_API_POS_T_EN, LM_API_POS_T_SET,
 			LM_API_ICTRL_T_EN, LM_API_ICTRL_T_SET};
+#endif
 	INT32 status=0;
 
 	for (UINT8 i=0; i<(sizeof(kTrustedMessages)/sizeof(kTrustedMessages[0])); i++)

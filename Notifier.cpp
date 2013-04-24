@@ -40,7 +40,7 @@ Notifier::Notifier(TimerEventHandler handler, void *param)
 		if (refcount == 0)
 		{
 			manager = new tInterruptManager(1 << kTimerInterruptNumber, false, &localStatus);
-			manager->registerHandler(ProcessQueue, NULL, &localStatus);
+			manager->registerHandler( (nFPGA::tInterruptHandler) ProcessQueue, NULL, &localStatus);
 			manager->enable(&localStatus);
 			talarm = tAlarm::create(&localStatus);
 		}
@@ -107,7 +107,7 @@ void Notifier::UpdateAlarm()
  * as its scheduled time is after the current time. Then the item is removed or 
  * rescheduled (repetitive events) in the queue.
  */
-void Notifier::ProcessQueue(uint32_t mask, void *params)
+void Notifier::ProcessQueue()
 {
 	Notifier *current;
 	while (true)				// keep processing past events until no more

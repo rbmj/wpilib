@@ -8,10 +8,12 @@
 #define ROBOTDRIVE_H_
 
 #include "ErrorBase.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include <vxWorks.h>
 #include "MotorSafety.h"
 #include "MotorSafetyHelper.h"
+#include "SpeedController.h"
+#include "GenericHID.h"
 
 class SpeedController;
 class GenericHID;

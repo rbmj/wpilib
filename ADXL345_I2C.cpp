@@ -9,11 +9,19 @@
 #include "NetworkCommunication/UsageReporting.h"
 #include "I2C.h"
 
+#if __cplusplus >= 201103L
+constexpr UINT8 ADXL345_I2C::kAddress;
+constexpr UINT8 ADXL345_I2C::kPowerCtlRegister;
+constexpr UINT8 ADXL345_I2C::kDataFormatRegister;
+constexpr UINT8 ADXL345_I2C::kDataRegister;
+constexpr double ADXL345_I2C::kGsPerLSB;
+#else
 const UINT8 ADXL345_I2C::kAddress;
 const UINT8 ADXL345_I2C::kPowerCtlRegister;
 const UINT8 ADXL345_I2C::kDataFormatRegister;
 const UINT8 ADXL345_I2C::kDataRegister;
-constexpr double ADXL345_I2C::kGsPerLSB;
+const double ADXL345_I2C::kGsPerLSB;
+#endif
 
 /**
  * Constructor.
@@ -73,7 +81,7 @@ double ADXL345_I2C::GetAcceleration(ADXL345_I2C::Axes axis)
  */
 ADXL345_I2C::AllAxes ADXL345_I2C::GetAccelerations()
 {
-	AllAxes data = {0.0};
+	AllAxes data = {0.0, 0.0, 0.0};
 	INT16 rawData[3];
 	if (m_i2c)
 	{

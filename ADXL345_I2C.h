@@ -20,11 +20,19 @@ class I2C;
 class ADXL345_I2C : public SensorBase
 {
 protected:
+#if __cplusplus >= 201103L
+	static constexpr UINT8 kAddress = 0x3A;
+	static constexpr UINT8 kPowerCtlRegister = 0x2D;
+	static constexpr UINT8 kDataFormatRegister = 0x31;
+	static constexpr UINT8 kDataRegister = 0x32;
+	static constexpr double kGsPerLSB = 0.00390625;
+#else
 	static const UINT8 kAddress = 0x3A;
 	static const UINT8 kPowerCtlRegister = 0x2D;
 	static const UINT8 kDataFormatRegister = 0x31;
 	static const UINT8 kDataRegister = 0x32;
-	static constexpr double kGsPerLSB = 0.00390625;
+	static const double kGsPerLSB = 0.00390625;
+#endif
 	enum PowerCtlFields {kPowerCtl_Link=0x20, kPowerCtl_AutoSleep=0x10, kPowerCtl_Measure=0x08, kPowerCtl_Sleep=0x04};
 	enum DataFormatFields {kDataFormat_SelfTest=0x80, kDataFormat_SPI=0x40, kDataFormat_IntInvert=0x20,
 		kDataFormat_FullRes=0x08, kDataFormat_Justify=0x04};
@@ -50,4 +58,3 @@ protected:
 };
 
 #endif
-

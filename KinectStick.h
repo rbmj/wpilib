@@ -21,16 +21,16 @@ class KinectStick : public GenericHID, public ErrorBase
 {
 public:
 	explicit KinectStick(int id);
-	virtual float GetX(JoystickHand hand = kRightHand);
-	virtual float GetY(JoystickHand hand = kRightHand);
+	virtual float GetX();
+	virtual float GetY();
 	virtual float GetZ();
 	virtual float GetTwist();
 	virtual float GetThrottle();
 	virtual float GetRawAxis(UINT32 axis);
 
-	virtual bool GetTrigger(JoystickHand hand = kRightHand);
-	virtual bool GetTop(JoystickHand hand = kRightHand);
-	virtual bool GetBumper(JoystickHand hand = kRightHand);
+	virtual bool GetTrigger();
+	virtual bool GetTop();
+	virtual bool GetBumper();
 	virtual bool GetRawButton(UINT32 button);
 
 private:

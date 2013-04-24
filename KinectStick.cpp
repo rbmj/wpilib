@@ -44,7 +44,7 @@ KinectStick::KinectStick(int id)
  * @param hand Unused
  * @return The X value of the KinectStick
  */
-float KinectStick::GetX(JoystickHand hand)
+float KinectStick::GetX()
 {
 	return GetRawAxis(Joystick::kDefaultXAxis);
 }
@@ -55,7 +55,7 @@ float KinectStick::GetX(JoystickHand hand)
  * @param hand Unused
  * @return The Y value of the KinectStick
  */
-float KinectStick::GetY(JoystickHand hand)
+float KinectStick::GetY()
 {
 	return GetRawAxis(Joystick::kDefaultYAxis);
 }
@@ -115,7 +115,7 @@ float KinectStick::GetRawAxis(UINT32 axis)
  * @param hand Unused
  * @return The state of the button.
  */
-bool KinectStick::GetTrigger(JoystickHand hand)
+bool KinectStick::GetTrigger()
 {
 	return GetRawButton(kTriggerMask);
 }
@@ -126,7 +126,7 @@ bool KinectStick::GetTrigger(JoystickHand hand)
  * @param hand Unused
  * @return The state of the button.
  */
-bool KinectStick::GetTop(JoystickHand hand)
+bool KinectStick::GetTop()
 {
 	return GetRawButton(kTopMask);
 }
@@ -137,7 +137,7 @@ bool KinectStick::GetTop(JoystickHand hand)
  * @param hand Unused
  * @return The state of the button.
  */
-bool KinectStick::GetBumper(JoystickHand hand)
+bool KinectStick::GetBumper()
 {
 	// TODO: Should this even be in GenericHID?  Is 4 an appropriate mask value (button 3)?
 	return GetRawButton(4);
