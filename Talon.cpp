@@ -69,7 +69,7 @@ Talon::~Talon()
  * @param speed The speed value between -1.0 and 1.0 to set.
  * @param syncGroup Unused interface.
  */
-void Talon::Set(float speed)
+void Talon::Set(float speed, UINT8 syncGroup)
 {
 	SetSpeed(speed);
 }

@@ -20,7 +20,7 @@ public:
 	explicit Talon(UINT32 channel);
 	Talon(UINT8 moduleNumber, UINT32 channel);
 	virtual ~Talon();
-	virtual void Set(float value);
+	virtual void Set(float value, UINT8 syncGroup = 0);
 	virtual float Get();
 	virtual void Disable();
 

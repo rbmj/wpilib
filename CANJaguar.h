@@ -45,7 +45,7 @@ public:
 
 	// SpeedController interface
 	virtual float Get();
-	virtual void Set(float value);
+	virtual void Set(float value, UINT8 syncGroup = 0);
 	virtual void Disable();
 
 	// PIDOutput interface
