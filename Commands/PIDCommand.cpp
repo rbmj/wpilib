@@ -14,6 +14,12 @@ PIDCommand::PIDCommand(double p, double i, double d, double f, double period)
 	m_controller = new PIDController(p, i, d, f, this, this, period);
 }
 
+PIDCommand::PIDCommand(const char* name, double p, double i, double d, double f, double period)
+: Command(name)
+{
+	m_controller = new PIDController(p, i, d, f, this, this, period);
+}
+
 PIDCommand::PIDCommand(const char *name, double p, double i, double d) :
 	Command(name)
 {

@@ -9,11 +9,19 @@
 #include "NetworkCommunication/UsageReporting.h"
 #include "I2C.h"
 
+#if __cplusplus >= 201103L
+constexpr UINT8 ADXL345_I2C::kAddress;
+constexpr UINT8 ADXL345_I2C::kPowerCtlRegister;
+constexpr UINT8 ADXL345_I2C::kDataFormatRegister;
+constexpr UINT8 ADXL345_I2C::kDataRegister;
+constexpr double ADXL345_I2C::kGsPerLSB;
+#else
 const UINT8 ADXL345_I2C::kAddress;
 const UINT8 ADXL345_I2C::kPowerCtlRegister;
 const UINT8 ADXL345_I2C::kDataFormatRegister;
 const UINT8 ADXL345_I2C::kDataRegister;
-constexpr double ADXL345_I2C::kGsPerLSB;
+const double ADXL345_I2C::kGsPerLSB;
+#endif
 
 /**
  * Constructor.

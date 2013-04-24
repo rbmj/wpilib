@@ -22,11 +22,17 @@ class AnalogModule: public Module
     friend class Module;
 
 public:
+#if __cplusplus >= 201103L
+	static constexpr long kTimebase = 40000000; ///< 40 MHz clock
+	static constexpr long kDefaultOversampleBits = 0;
+	static constexpr long kDefaultAverageBits = 7;
+	static constexpr float kDefaultSampleRate = 50000.0;
+#else
 	static const long kTimebase = 40000000; ///< 40 MHz clock
 	static const long kDefaultOversampleBits = 0;
 	static const long kDefaultAverageBits = 7;
-	static constexpr float kDefaultSampleRate = 50000.0;
-
+	static const float kDefaultSampleRate = 50000.0;
+#endif
 	void SetSampleRate(float samplesPerSecond);
 	float GetSampleRate();
 	void SetAverageBits(UINT32 channel, UINT32 bits);
