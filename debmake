@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+PKG='wpilib'
+CURDIR=`pwd`
+
+VERSION_FULL=`dpkg-parsechangelog -c1 | grep Version | cut "-d " -f 2`
+TMP="echo $VERSION_FULL | tr '-' '\\n'"
+if [ "`eval $TMP | wc -l`" = "1" ] ; then
+    REVISION=""
+    VERSION=$VERSION_FULL
+else
+    REVISION=`eval $TMP | tail -1`
+    VERSION=`eval $TMP | head -n -1 | tr '\n' '-'`
+    VERSION=${VERSION%?} # get rid of extra dash at end
+fi
+unset TMP
+
+BUILDDIR="$CURDIR/build"
+NEWSRCDIR="$BUILDDIR/$PKG-$VERSION"
+ORIG_ARCHIVE="$BUILDDIR/${PKG}_$VERSION.orig.tar.gz"
+
+# just regen every time for now...
+rm -rf "$NEWSRCDIR"
+mkdir -p "$NEWSRCDIR"
+
+#export source
+git archive master | tar -x -C "$NEWSRCDIR"
+cd "$BUILDDIR"
+tar -czf "$ORIG_ARCHIVE" "`basename \"$NEWSRCDIR\"`"
+
+cd "$NEWSRCDIR"
+
+debuild -e WIND_BASE
+
