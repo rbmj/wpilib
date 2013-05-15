@@ -245,7 +245,17 @@ bool Joystick::GetButton(ButtonType button)
 		return false;
 	}
 }
-
+bool Joystick::ButtonPressed(UINT32 button) {
+	/*Returns true if and only if the button was not pressed the last time the function was called, and is pressed
+	* On the current call*/
+	if (ButtonValues[button] == false and GetRawButton(button) == true) {
+		ButtonValues[button] = true;
+		return true;
+	} else {
+		ButtonValues[button] = GetRawButton(button);
+		return false;
+	}
+}
 /**
  * Get the channel currently associated with the specified axis.
  * 

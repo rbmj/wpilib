@@ -57,6 +57,7 @@ public:
 	virtual bool GetBumper(JoystickHand hand = kRightHand);
 	virtual bool GetButton(ButtonType button);
 	bool GetRawButton(UINT32 button);
+	virtual bool ButtonPressed(UINT32 button);
 	static Joystick* GetStickForPort(UINT32 port);
 	
 	virtual float GetMagnitude();
@@ -71,6 +72,7 @@ private:
 	UINT32 m_port;
 	UINT32 *m_axes;
 	UINT32 *m_buttons;
+	bool ButtonValues [10];
 };
 
 #endif

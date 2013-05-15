@@ -3,7 +3,7 @@
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in $(WIND_BASE)/WPILib.  */
 /*----------------------------------------------------------------------------*/
-
+//NEW COMMENT
 #ifndef QUAD_ENCODER_H_
 #define QUAD_ENCODER_H_
 
