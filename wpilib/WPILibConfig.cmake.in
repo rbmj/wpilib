@@ -1,0 +1,20 @@
+#Set Include Dirs
+
+if (${CMAKE_HOST_WIN32})
+    GET_FILENAME_COMPONENT(INSTALLDIR
+        "[HKEY_LOCAL_MACHINE\\Software\\FIRST\\FRCToolchain;INSTALLDIR]"
+        ABSOLUTE CACHE)
+    if ("${INSTALLDIR}" STREQUAL "")
+        message(FATAL_ERROR "Cannot find installation directory in registry")
+    endif()
+else()
+    set(INSTALLDIR "")
+endif()
+
+set(WPILib_INCLUDE_DIRS "${INSTALLDIR}@CMAKE_INSTALL_PREFIX@/@HEADER_DIR@")
+set(WPILIB_INCLUDE_DIRS "${WPILib_INCLUDE_DIRS}")
+
+set(WPILib_LIBRARY "${INSTALLDIR}@CMAKE_INSTALL_PREFIX@/@LIB_DIR@/lib@LIB_NAME@.a")
+set(WPILIB_LIBRARY "${WPILib_LIBRARY}")
+
+
