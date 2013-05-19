@@ -10,10 +10,17 @@
 #include "WPIErrors.h"
 #include "NetworkCommunication/AICalibration.h"
 
+#if __cplusplus >= 201103L
+constexpr long AnalogModule::kTimebase; ///< 40 MHz clock
+constexpr long AnalogModule::kDefaultOversampleBits;
+constexpr long AnalogModule::kDefaultAverageBits;
+constexpr float AnalogModule::kDefaultSampleRate;
+#else
 const long AnalogModule::kTimebase; ///< 40 MHz clock
 const long AnalogModule::kDefaultOversampleBits;
 const long AnalogModule::kDefaultAverageBits;
-constexpr float AnalogModule::kDefaultSampleRate;
+const float AnalogModule::kDefaultSampleRate;
+#endif
 SEM_ID AnalogModule::m_registerWindowSemaphore = NULL;
 
 /**

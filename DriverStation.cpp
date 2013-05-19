@@ -15,11 +15,19 @@
 #include "WPIErrors.h"
 #include <strLib.h>
 
+#if __cplusplus >= 201103L
+constexpr UINT32 DriverStation::kBatteryModuleNumber;
+constexpr UINT32 DriverStation::kBatteryChannel;
+constexpr UINT32 DriverStation::kJoystickPorts;
+constexpr UINT32 DriverStation::kJoystickAxes;
+constexpr float DriverStation::kUpdatePeriod;
+#else
 const UINT32 DriverStation::kBatteryModuleNumber;
 const UINT32 DriverStation::kBatteryChannel;
 const UINT32 DriverStation::kJoystickPorts;
 const UINT32 DriverStation::kJoystickAxes;
-constexpr float DriverStation::kUpdatePeriod;
+const float DriverStation::kUpdatePeriod;
+#endif
 DriverStation* DriverStation::m_instance = NULL;
 UINT8 DriverStation::m_updateNumber = 0;
 
