@@ -1,0 +1,27 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Ignore the builddir
+build/*
+
+# Ignore WindRiver crap
+PPC603gnu/*
+*.*project
+*.wr*
+Debug/*
+# Some other misc files that might pop up
+*.*swp
+*.*~
+*.*orig
+
