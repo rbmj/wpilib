@@ -40,7 +40,7 @@ Notifier::Notifier(TimerEventHandler handler, void *param)
 		if (refcount == 0)
 		{
 			manager = new tInterruptManager(1 << kTimerInterruptNumber, false, &localStatus);
-			manager->registerHandler(ProcessQueue, NULL, &localStatus);
+			manager->registerHandler( (nFPGA::tInterruptHandler) ProcessQueue, NULL, &localStatus);
 			manager->enable(&localStatus);
 			talarm = tAlarm::create(&localStatus);
 		}
