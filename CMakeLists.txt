@@ -21,18 +21,30 @@ target_link_libraries(${LIB_NAME} ${WPI_LIBS})
 install(TARGETS ${LIB_NAME} 
 	LIBRARY DESTINATION ${LIB_DIR} 
 	ARCHIVE DESTINATION ${LIB_DIR} 
-	RUNTIME DESTINATION bin)
+	RUNTIME DESTINATION bin
+)
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/ 
 	DESTINATION ${HEADER_DIR}
 	FILES_MATCHING
 		PATTERN *.h
 		PATTERN ".git" EXCLUDE
 		PATTERN ".settings" EXCLUDE
-		PATTERN "${HEADER_DIR}" EXCLUDE #prevent infinite recurse case
+		#prevent infinite recursion if DESTDIR is subdir of SRCDIR
+		PATTERN "${HEADER_DIR}" EXCLUDE
+		PATTERN share/WPILib/src EXCLUDE
+)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/
+	DESTINATION share/WPILib/src
+	FILES_MATCHING
+		PATTERN *.h
+		PATTERN *.cpp
+		PATTERN ".git" EXCLUDE
+		PATTERN ".settings" EXCLUDE
+		PATTERN "${HEADER_DIR}" EXCLUDE
+		PATTERN share/WPILib/src EXCLUDE
 )
 install(FILES
-   "${PROJECT_BINARY_DIR}/WPILibConfig.cmake"
-   "${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake"
-   DESTINATION "share/WPILib/cmake"
+	"${PROJECT_BINARY_DIR}/WPILibConfig.cmake"
+	"${PROJECT_BINARY_DIR}/WPILibConfigVersion.cmake"
+	DESTINATION "share/WPILib/cmake"
 )
-
