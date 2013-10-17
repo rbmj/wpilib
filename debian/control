@@ -1,5 +1,6 @@
 Source: frc-wpilib
 Priority: extra
+Maintainer: R Blair Mason (rbmj) <rbmj@verizon.net>
 Build-Depends: debhelper (>= 8.0.0), cmake, gcc-powerpc-wrs-vxworks, frc-buildscripts
 Standards-Version: 3.9.3
 Section: libs
@@ -10,8 +11,7 @@ Vcs-Browser: http://firstforge.wpi.edu/integration/viewcvs/viewcvs.cgi/?root=wpi
 Package: wpilib
 Section: libs
 Architecture: all
-Pre-Depends: wrs-headers
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, wrs-headers
 Recommends: gcc-powerpc-wrs-vxworks, frc-buildscripts, cmake
 Description: WPILib for the FIRST Robotics Competition
  WPILib, developed by Worcester Polytechnic Institute for FIRST, is a

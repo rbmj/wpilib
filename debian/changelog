@@ -1,20 +1,16 @@
-<<<<<<< HEAD
+wpilib (2013.4-3) unstable; urgency=low
+
+  * Cosmetic changes to dependencies
+  * 
+
+ -- R Blair Mason (rbmj) <rbmj@verizon.net>  Thu, 17 Oct 2013 16:43:29 -0400
+
 wpilib (2013.4-2) unstable; urgency=low
 
   * Non-maintainer upload.
   * 
 
  -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Tue, 26 Mar 2013 10:05:08 -0400
-
-wpilib (2013.4-1) unstable; urgency=low
-=======
-frc-wpilib (2013svn3623+1-1) unstable; urgency=low
->>>>>>> upstream
-
-  * Initial release
-
-<<<<<<< HEAD
- -- Robert Blair Mason Jr. (rbmj) <rbmj@verizon.net>  Tue, 05 Mar 2013 17:19:19 -0500
 
 wpilib (2013.3-1) unstable; urgency=low
 
