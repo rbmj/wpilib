@@ -1,4 +1,4 @@
-Source: frc-wpilib
+Source: wpilib
 Priority: extra
 Maintainer: R Blair Mason (rbmj) <rbmj@verizon.net>
 Build-Depends: debhelper (>= 8.0.0), cmake, gcc-powerpc-wrs-vxworks, frc-buildscripts
