@@ -13,4 +13,4 @@
 	dh $@ 
 
 override_dh_auto_configure:
-	frcmake -DCMAKE_TOOLCHAIN_FILE=/usr/powerpc-wrs-vxworks/share/cmake/toolchain.cmake
+	frcmake
