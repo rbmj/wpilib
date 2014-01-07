@@ -36,9 +36,9 @@ public:
 	
 	Ultrasonic(DigitalOutput *pingChannel, DigitalInput *echoChannel, DistanceUnit units = kInches);
 	Ultrasonic(DigitalOutput &pingChannel, DigitalInput &echoChannel, DistanceUnit units = kInches);
-	Ultrasonic(UINT32 pingChannel, UINT32 echoChannel, DistanceUnit units = kInches);
-	Ultrasonic(UINT8 pingModuleNumber, UINT32 pingChannel,
-							UINT8 echoModuleNumber, UINT32 echoChannel, DistanceUnit units = kInches);
+	Ultrasonic(uint32_t pingChannel, uint32_t echoChannel, DistanceUnit units = kInches);
+	Ultrasonic(uint8_t pingModuleNumber, uint32_t pingChannel,
+							uint8_t echoModuleNumber, uint32_t echoChannel, DistanceUnit units = kInches);
 	virtual ~Ultrasonic();
 
 	void Ping();
@@ -66,7 +66,7 @@ private:
 	static void UltrasonicChecker();
 
 	static constexpr double kPingTime = 10 * 1e-6;	///< Time (sec) for the ping trigger pulse.
-	static const UINT32 kPriority = 90;	///< Priority that the ultrasonic round robin task runs.
+	static const uint32_t kPriority = 90;	///< Priority that the ultrasonic round robin task runs.
 	static constexpr double kMaxUltrasonicTime = 0.1;	///< Max time (ms) between readings.
 	static constexpr double kSpeedOfSoundInchesPerSec = 1130.0 * 12.0;
 

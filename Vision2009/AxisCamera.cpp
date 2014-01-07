@@ -42,7 +42,7 @@
 #define DEFAULT_PACKET_SIZE 512
 
 /** Private NI function to decode JPEG */ 
-IMAQ_FUNC int Priv_ReadJPEGString_C(Image* _image, const unsigned char* _string, UINT32 _stringLength); 
+IMAQ_FUNC int Priv_ReadJPEGString_C(Image* _image, const unsigned char* _string, uint32_t _stringLength); 
 
 // To locally enable debug printing: set AxisCamera_debugFlag to a 1, to disable set to 0
 int AxisCamera_debugFlag = 0;
