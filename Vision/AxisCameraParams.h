@@ -66,7 +66,7 @@ protected:
 	int ReadCamParams();
 
 	Task m_paramTask;
-	UINT32 m_ipAddress; // IPv4
+	uint32_t m_ipAddress; // IPv4
 	SEM_ID m_paramChangedSem;
 	SEM_ID m_socketPossessionSem;
 

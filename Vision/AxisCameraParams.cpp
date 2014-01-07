@@ -51,7 +51,7 @@ AxisCameraParams::AxisCameraParams(const char* ipAddress)
 #else
 		DriverStation *ds = DriverStation::GetInstance();
 		ds->WaitForData();
-		UINT16 teamNumber = ds->GetTeamNumber();
+		uint16_t teamNumber = ds->GetTeamNumber();
 		char cameraIP[16];
 		snprintf(cameraIP, 16, "10.%d.%d.11", teamNumber / 100, teamNumber % 100);
 		m_ipAddress = inet_addr(cameraIP);

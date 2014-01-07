@@ -26,6 +26,9 @@ EntryValue DefaultEntryTypes::BOOLEAN_t::readValue(DataIOStream& is) {
 	value.b = (is.readByte()!=0);
 	return value;
 }
+bool DefaultEntryTypes::BOOLEAN_t::areEqual(EntryValue v1, EntryValue v2) {
+  return v1.b == v2.b;
+}
 	
 DefaultEntryTypes::DOUBLE_t::DOUBLE_t() : NetworkTableEntryType(DOUBLE_RAW_ID, "Double"){}
 void DefaultEntryTypes::DOUBLE_t::sendValue(EntryValue eValue, DataIOStream& os) {
@@ -47,6 +50,9 @@ EntryValue DefaultEntryTypes::DOUBLE_t::readValue(DataIOStream& is) {
 	eValue.f = *reinterpret_cast<double*>(&value);
 	return eValue;
 }
+bool DefaultEntryTypes::DOUBLE_t::areEqual(EntryValue v1, EntryValue v2) {
+  return v1.f == v2.f;
+}
 	
 DefaultEntryTypes::STRING_t::STRING_t() : NetworkTableEntryType(STRING_RAW_ID, "String"){}
 void DefaultEntryTypes::STRING_t::sendValue(EntryValue value, DataIOStream& os) {
@@ -67,6 +73,11 @@ EntryValue DefaultEntryTypes::STRING_t::copyValue(EntryValue value){
 void DefaultEntryTypes::STRING_t::deleteValue(EntryValue value){
   if(value.ptr!=NULL)
     delete (std::string*)value.ptr;
+}
+bool DefaultEntryTypes::STRING_t::areEqual(EntryValue v1, EntryValue v2) {
+  std::string* str1 = (std::string*)v1.ptr;
+  std::string* str2 = (std::string*)v2.ptr;
+  return str1->compare(*str2)==0;
 }
 
 

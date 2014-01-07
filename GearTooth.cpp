@@ -28,7 +28,7 @@ void GearTooth::EnableDirectionSensing(bool directionSensitive)
  * @param channel The GPIO channel on the digital module that the sensor is connected to.
  * @param directionSensitive Enable the pulse length decoding in hardware to specify count direction.
  */
-GearTooth::GearTooth(UINT32 channel, bool directionSensitive)
+GearTooth::GearTooth(uint32_t channel, bool directionSensitive)
 	: Counter(channel)
 {
 	EnableDirectionSensing(directionSensitive);
@@ -41,7 +41,7 @@ GearTooth::GearTooth(UINT32 channel, bool directionSensitive)
  * @param channel The GPIO channel on the digital module that the sensor is connected to.
  * @param directionSensitive Enable the pulse length decoding in hardware to specify count direction.
  */
-GearTooth::GearTooth(UINT8 moduleNumber, UINT32 channel, bool directionSensitive)
+GearTooth::GearTooth(uint8_t moduleNumber, uint32_t channel, bool directionSensitive)
 	: Counter(moduleNumber, channel)
 {
 	EnableDirectionSensing(directionSensitive);

@@ -1,3 +1,9 @@
+wpilib (2014.0) unstable; urgency=low
+
+  * Update for 2014 season
+
+ -- R Blair Mason (rbmj) <rbmj@verizon.net>  Tue, 07 Jan 2014 11:57:05 -0500
+
 wpilib (2013.4-3) unstable; urgency=low
 
   * Cosmetic changes to dependencies
