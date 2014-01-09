@@ -31,7 +31,7 @@ void DigitalInput::InitDigitalInput(uint8_t moduleNumber, uint32_t channel)
 	}
 	if (!CheckDigitalChannel(channel))
 	{
-		snprintf(buf, 64, "Digital Channel %d", channel);
+		snprintf(buf, 64, "Digital Channel %lu", channel);
 		wpi_setWPIErrorWithContext(ChannelIndexOutOfRange, buf);
 		return;
 	}

@@ -33,12 +33,12 @@ void AnalogChannel::InitChannel(uint8_t moduleNumber, uint32_t channel)
 	}
 	if (!CheckAnalogChannel(channel))
 	{
-		snprintf(buf, 64, "Analog Channel %d", channel);
+		snprintf(buf, 64, "Analog Channel %lu", channel);
 		wpi_setWPIErrorWithContext(ChannelIndexOutOfRange, buf);
 		return;
 	}
 
-	snprintf(buf, 64, "Analog Input %d (Module: %d)", channel, moduleNumber);
+	snprintf(buf, 64, "Analog Input %lu (Module: %d)", channel, moduleNumber);
 	if (channels->Allocate((moduleNumber - 1) * kAnalogChannels + channel - 1, buf) == ~0ul)
 	{
 		CloneError(channels);
