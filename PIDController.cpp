@@ -492,6 +492,9 @@ bool PIDController::OnTarget()
 		//TODO: this case needs an error
 		case kNoTolerance:
 			temp = false;
+			break;
+		default:
+			temp = false;
 		}
 	}
 	END_REGION;

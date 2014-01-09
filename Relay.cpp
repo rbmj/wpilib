@@ -36,14 +36,14 @@ void Relay::InitRelay (uint8_t moduleNumber)
 	}
 	if (!SensorBase::CheckRelayChannel(m_channel))
 	{
-		snprintf(buf, 64, "Relay Channel %d", m_channel);
+		snprintf(buf, 64, "Relay Channel %lu", m_channel);
 		wpi_setWPIErrorWithContext(ChannelIndexOutOfRange, buf);
 		return;
 	}
 
 	if (m_direction == kBothDirections || m_direction == kForwardOnly)
 	{
-		snprintf(buf, 64, "Forward Relay %d (Module: %d)", m_channel, moduleNumber);
+		snprintf(buf, 64, "Forward Relay %lu (Module: %d)", m_channel, moduleNumber);
 		if (relayChannels->Allocate(((moduleNumber - 1) * kRelayChannels + m_channel - 1) * 2, buf) == ~0ul)
 		{
 			CloneError(relayChannels);
@@ -54,7 +54,7 @@ void Relay::InitRelay (uint8_t moduleNumber)
 	}
 	if (m_direction == kBothDirections || m_direction == kReverseOnly)
 	{
-		snprintf(buf, 64, "Reverse Relay %d (Module: %d)", m_channel, moduleNumber);
+		snprintf(buf, 64, "Reverse Relay %lu (Module: %d)", m_channel, moduleNumber);
 		if (relayChannels->Allocate(((moduleNumber - 1) * kRelayChannels + m_channel - 1) * 2 + 1, buf) == ~0ul)
 		{
 			CloneError(relayChannels);

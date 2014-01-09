@@ -49,11 +49,11 @@ void CANJaguar::InitCANJaguar()
 		char buf[256];
 		if (fwVer < 3330)
 		{
-			snprintf(buf, 256, "Jag #%d firmware (%d) is too old (must be at least version 101 of the FIRST approved firmware)", m_deviceNumber, fwVer);
+			snprintf(buf, 256, "Jag #%d firmware (%lu) is too old (must be at least version 101 of the FIRST approved firmware)", m_deviceNumber, fwVer);
 		}
 		else
 		{
-			snprintf(buf, 256, "Jag #%d firmware (%d) is not FIRST approved (must be at least version 101 of the FIRST approved firmware)", m_deviceNumber, fwVer);
+			snprintf(buf, 256, "Jag #%d firmware (%lu) is not FIRST approved (must be at least version 101 of the FIRST approved firmware)", m_deviceNumber, fwVer);
 		}
 		wpi_setWPIErrorWithContext(JaguarVersionError, buf);
 		return;

@@ -38,12 +38,12 @@ void PWM::InitPWM(uint8_t moduleNumber, uint32_t channel)
 	}
 	if (!CheckPWMChannel(channel))
 	{
-		snprintf(buf, 64, "PWM Channel %d", channel);
+		snprintf(buf, 64, "PWM Channel %lu", channel);
 		wpi_setWPIErrorWithContext(ChannelIndexOutOfRange, buf);
 		return;
 	}
 
-	snprintf(buf, 64, "PWM %d (Module: %d)", channel, moduleNumber);
+	snprintf(buf, 64, "PWM %lu (Module: %d)", channel, moduleNumber);
 	if (allocated->Allocate((moduleNumber - 1) * kPwmChannels + channel - 1, buf) == ~0ul)
 	{
 		CloneError(allocated);

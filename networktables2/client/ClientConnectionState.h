@@ -88,6 +88,7 @@ public:
 	 * @param e
 	 */
 	ClientConnectionState_Error(std::exception& e);
+	virtual ~ClientConnectionState_Error();
 	/**
 	 * @return the exception that caused the client to enter an error state
 	 */

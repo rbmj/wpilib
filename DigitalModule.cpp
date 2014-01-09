@@ -252,7 +252,7 @@ uint8_t DigitalModule::GetRelayReverse()
 bool DigitalModule::AllocateDIO(uint32_t channel, bool input)
 {
 	char buf[64];
-	snprintf(buf, 64, "DIO %d (Module %d)", channel, m_moduleNumber);
+	snprintf(buf, 64, "DIO %lu (Module %d)", channel, m_moduleNumber);
 	if (DIOChannels->Allocate(kDigitalChannels * (m_moduleNumber - 1) + channel - 1, buf) == ~0ul) return false;
 	tRioStatusCode localStatus = NiFpga_Status_Success;
 	{
