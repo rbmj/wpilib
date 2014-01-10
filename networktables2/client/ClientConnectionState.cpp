@@ -57,6 +57,8 @@ ClientConnectionState_Error::ClientConnectionState_Error(std::exception& _e):Cli
   strcpy(msg, "CLIENT_ERROR: ");
   strcat(msg, e.what());
 }
+ClientConnectionState_Error::~ClientConnectionState_Error() {
+}
 /**
  * @return the exception that caused the client to enter an error state
  */
