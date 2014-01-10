@@ -50,6 +50,7 @@ void NetworkTable::Initialize() {
 
 void NetworkTable::Shutdown() 
 {
+	printf("[NT] NetworkTable::Shutdown()...\n");
 	if (staticProvider!=NULL)
 	{
 		delete staticProvider;
@@ -71,6 +72,7 @@ void NetworkTable::Shutdown()
 		delete typeManager;
 		typeManager=NULL;
 	}
+	printf("[NT] ...NetworkTable::Shutdown().\n");
 }
 
 void NetworkTable::SetTableProvider(NetworkTableProvider* provider){
@@ -333,3 +335,20 @@ NetworkTableEntry* EntryCache::Get(std::string& key){
 	return cache[key];
 }
 
+/**
+ * This class exists for the sole purpose of getting its destructor called when
+ * the module unloads. Before the module is done unloading, we need to call
+ * NetworkTable::Shutdown(), which will clean up the NetworkTable class's
+ * resources.
+ */
+class NetworkTableDeleter
+{
+public:
+    NetworkTableDeleter() {}
+    ~NetworkTableDeleter()
+    {
+        NetworkTable::Shutdown();
+    }
+};
+
+static NetworkTableDeleter g_networkTableDeleter;
